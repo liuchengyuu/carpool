@@ -1,0 +1,9 @@
+<!--miniprogram/pages/personalCollection.wxml-->
+<courseSearchResult
+  id='searchResult'
+  courseSearchList="{{courseList}}"
+  bind:getDriverCourse="_getDriverCourse"
+  bind:getPassengerCourse="_getPassengerCourse"
+  >
+
+</courseSearchResult>

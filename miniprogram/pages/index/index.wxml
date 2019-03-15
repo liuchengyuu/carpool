@@ -1,0 +1,71 @@
+<!--index.wxml-->
+<view class="container">
+  <view id='top-bar'>
+    <view id='get-location' bindtap='bindGetLocation'>
+      <view wx:if="{{locationInfo === ''}}">
+        <i class="iconfont icon-dingwei" style="fontsize:20rpx;"></i>定位
+      </view>
+      <view wx:else>
+        <i class="iconfont icon-dingwei" style="fontsize:20rpx;"></i> {{locationInfo}}
+      </view>
+      
+    </view>
+    <view id='top-bar-right'>
+      <view bindtap='goSearchByLocPage' id='search-by-location'>
+        <i class="iconfont icon-sousuo-copy" style="fontsize:20rpx;"></i>
+        查询行程
+      </view>
+    </view>
+  </view>
+  <!-- 线路汇总信息 -->
+  <view bindtap='bindToCourseSearch' class='course-total'>
+    <view class='course-total-top'>
+      <label style='font-size:32rpx;font-weight:bold;'>
+        <i class="iconfont icon-tongji" style="fontsize:20rpx;color:#00b26a"></i>
+        行程汇总
+      </label>
+      <label>></label>
+    </view>
+    <view class='course-total-list'>
+      <view class='course-item' wx:key="{{item._id}}" wx:for="{{courseTotalList}}" wx:for-index="idx" wx:for-item="item">
+        <label>{{item.city}}</label>  
+        <label class='city-course-total'>{{item.sum}}</label>
+      </view>
+    </view>
+  </view>
+
+  <view class='menu-bar'>
+    <view class='menu-title'>
+      <i class="iconfont icon-fujin" style="fontsize:20rpx;color:#00b26a"></i>
+      附近车主
+    </view>
+
+    <view class='switch-btn-wrapper'>
+      <label id='passengerNearby' class='cur-menu' bindtap='bindGetPassengerNearby' wx:if="{{showType == 0}}">乘客</label>
+      <label id='passengerNearby' bindtap='bindGetPassengerNearby' wx:else>乘客</label>
+      <label id='driverNearby' class='cur-menu' bindtap='bindGetDriverNearby' wx:if="{{showType == 1}}">车主</label>
+      <label id='driverNearby' bindtap='bindGetDriverNearby' wx:else>车主</label>
+    </view>
+  </view>
+
+  <!-- 行程card -->
+  <view wx:if="{{msgList.length > 0}}" style="width:100%">
+    <courseCard id='courseCard' wx:key="{{item._id}}" wx:for="{{msgList}}" wx:for-index="idx" wx:for-item="item" courseObj='{{item}}' showType="{{showType}}">
+    </courseCard>
+  </view>
+  <view style='width:100%;text-align:center;font-size:28rpx;margin-top:300rpx;' wx:else>
+    暂无数据~
+  </view>
+  <!-- 用户 openid -->
+  <!-- <view class="userinfo">
+    <button 
+      open-type="getUserInfo" 
+      bindgetuserinfo="onGetUserInfo"
+      class="userinfo-avatar"
+      style="background-image: url({{avatarUrl}})"
+    ></button>
+    <view>
+      <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
+    </view>
+  </view> -->
+</view>

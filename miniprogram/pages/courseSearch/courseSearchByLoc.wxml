@@ -1,0 +1,30 @@
+<!--miniprogram/pages/courseSearch/courseSearchByLoc.wxml-->
+<view class='top-search-wrapper'>
+  <view class='datetime-wrapper'>
+    <label>日期</label>
+    <picker bindchange='bindDateChange' name="date" mode="date" value="{{date}}">
+      <view class='picker'>
+        {{date}} >
+      </view>
+    </picker>
+  </view>
+
+  <view class='address-wrapper'>
+    <view class="input-wrapper">
+      <label class='start-icon'>起</label>
+      <input bindfocus='bindSelectStart' class='point-input' id='start' name="start" value='{{startAddress.name}}' placeholder='点击选择起点'/>
+    </view>
+    <view class="input-wrapper">
+      <label class='end-icon'>终</label>
+      <input bindfocus='bindSelectEnd' class='point-input' id='end' name="end" value='{{endAddress.name}}' placeholder='点击选择终点'/>
+    </view>
+  </view>
+</view>
+
+<!-- 车主&乘客 -->
+<courseSearchResult
+  showType="{{showType}}"
+  courseSearchList="{{courseSearchList}}"
+  bind:getDriverCourse="_getDriverCourse"
+  bind:getPassengerCourse="_getPassengerCourse">
+</courseSearchResult>

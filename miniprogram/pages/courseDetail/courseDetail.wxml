@@ -1,0 +1,81 @@
+<!--miniprogram/pages/courseDetail/courseDetail.wxml-->
+<view class='container' style='width:100%;height:100%'>
+  <map id="myMap" 
+  latitude="{{latitude}}" 
+  longitude="{{longitude}}" 
+  markers="{{markers}}"
+  subkey="H6HBZ-T5LCV-CXFPA-UAJJR-UDJTE-5EB3X"
+  polyline="{{polyline}}"
+  include-points="{{includePoints}}"
+  show-location
+  >
+</map>
+
+<view class='msg-wrapper'>
+  <!-- 个人信息 -->
+  <view class='userinfo'>
+    <image class="userinfo-avatar" src='{{courseInfo.avatarUrl}}'></image>
+    <label class='userinfo-nickname'></label>
+    <label wx:if="{{showType == 1}}" style='margin-left:20rpx;font-size: 24rpx;color:#595959'>
+      {{courseInfo.carNum}}  {{courseInfo.carInfo}}
+    </label>
+  </view>
+  <!-- 拼车信息 -->
+  <view class='pinche-info'>
+    <!-- 行程时间 -->
+    <view class='item-wrapper'>
+      <i class="iconfont icon-shijian" style=""></i>
+      <view class='datetime'>{{courseInfo.date}} {{courseInfo.time}}</view>
+    </view>
+    <!-- 起终点 -->
+    <view class='address-wrapper'>
+      <view class='start-address'>
+        <view class='address-title'>{{courseInfo.startAddressInfo.name}}</view>
+        <view class='address-detail'>{{courseInfo.start}}</view>
+      </view>
+      <view class='end-address'>
+          <view class='address-title'>{{courseInfo.endAddressInfo.name}}</view>
+          <view class='address-detail'>{{courseInfo.end}}</view>
+      </view>    
+    </view>
+
+    <view class='num-wrapper' style='margin-top:30rpx' >
+        <view class='' wx:if="{{showType == 0}}">
+          <i class="iconfont icon-renshu" style="color:grey;"></i>人数
+        </view>
+        <view class='' wx:else>
+          <i class="iconfont icon-renshu" style="color:grey;"></i>余座
+        </view>
+        <view>  
+          <label class='num-info'>{{courseInfo.personNum}}</label>
+          <label style='font-size: 24rpx; color:#595959;padding-left:10rpx;'>人</label>
+        </view>
+    </view>
+
+    <view class='price-wrapper'>
+        <view class='datetime'><i class="iconfont icon-4" style=""></i>可接受价</view>
+        <view>  
+          <label class='num-info'>{{courseInfo.price}}</label>
+          <label style='font-size: 24rpx; color:#595959;padding-left:10rpx;'>元</label>
+        </view>
+    </view>
+
+  
+    <view class='item-wrapper' style='margin-top:30rpx;height:80px;font-size:28rpx;'>
+      <label style='width:100rpx;'>备注:</label>
+      <textarea value='{{courseInfo.note}}' style='height:180rpx;margin-left:30rpx;'></textarea>
+    </view>
+</view>
+</view>
+<view class='btn-group'>
+  <label wx:if="{{isCollected}}">
+    已收藏
+  </label>
+  <label wx:else bindtap='bindCollectCourse' id='starBtn'>收藏</label>
+  <label id='shareBtn'>分享</label>
+  <label id='callBtn' bindtap='bindCallPhone' data-phone='{{courseInfo.phone}}'>联系TA</label>
+</view>
+</view>
+
+<!-- 
+<map id="myMap" longitude="113.324520" latitude="23.099994" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: 300px;"></map> -->

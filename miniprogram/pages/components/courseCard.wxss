@@ -1,0 +1,91 @@
+/* pages/components/courseCard.wxss */
+/* 卡片 */
+@import '../../libs/icon.wxss';
+.msg-card {
+  width: 91%;
+  font-size: 32rpx;
+  margin: 20rpx auto;
+  padding: 16rpx;
+  padding-top: 8rpx;
+  border-radius: 20rpx;
+  background-color: #fff;
+
+}
+.userinfo {
+  width: 100%;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-bottom: 1rpx solid #ececec;
+}
+.userinfo-avatar {
+  position: relative;
+  left: 2rpx;
+  margin-top: -30rpx;
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 70px;
+}
+
+.userinfo-nickname {
+  margin-left: 26rpx;
+}
+.item-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: 90rpx;
+  line-height: 90rpx
+}
+.datetime {
+  margin-left: 10rpx;
+}
+.address-line {
+  display: flex;
+  flex-direction: column;
+  height: 160rpx;
+  width: 40rpx;
+  text-align: left;
+  margin-left: -10rpx;
+}
+.line {
+  flex: 1;
+  width: 2rpx;
+  margin-left: 19rpx;
+  background-color: #ececec;
+}
+.address-detail {
+  padding: 10rpx 0;
+  font-size: 24rpx;
+  color: #595959;
+}
+.address-wrapper {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+}
+
+.price-num {
+  display: flex;
+  text-align: right;
+  flex-direction: column;
+  height: 160rpx;
+  width: 20%;
+  padding-right: 20rpx;
+}
+.main-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.price-info {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.num-info {
+  display: inline-block;
+  width: 30rpx;
+  font-weight: bold;
+}
+
+.end-address {
+  margin-top: 16rpx;
+}

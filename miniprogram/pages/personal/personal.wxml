@@ -1,0 +1,39 @@
+<view class='container'>
+  <view class='userinfo-wrapper'>
+    <open-data class="userinfo-avatar" type="userAvatarUrl"></open-data>
+    <open-data class="userinfo-nickname" type="userNickName" lang="zh_CN"></open-data>
+  
+  </view>
+  
+  <!-- 功能列表 -->
+  <view class='my-items'>
+    <view bindtap='bindGetMyCollection' class='item-wrapper'>
+      <view>
+        <i class="iconfont icon-xingzhuanggongnengtubiao-" style="fontsize:20rpx;color:#00b26a;"></i>我的收藏
+      </view>
+      
+      <label>></label>
+    </view>
+    <view bindtap='bindGetMyCoursePage' class='item-wrapper'>
+      <view>
+        <i class="iconfont icon-flagfold" style="fontsize:20rpx;color:#00b26a;"></i>我的行程
+      </view>
+      <label>></label>
+    </view>
+    <!-- 安全须知 -->
+    <view class='item-wrapper'>
+      <view>
+        <i class="iconfont icon-ai-safe" style="fontsize:20rpx;color:red;"></i>安全须知
+      </view>
+      <label>></label>
+    </view>
+    
+    <view bindtap='bindGoAboutUs' class='item-wrapper'>
+      <view>
+        <i class="iconfont icon-guanyuwomen" style="fontsize:20rpx;color:#00b26a;"></i>关于我们
+      </view>
+      <label>></label>
+    </view>
+  </view>
+  
+</view>

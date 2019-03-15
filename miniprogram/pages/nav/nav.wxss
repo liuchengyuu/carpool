@@ -1,0 +1,41 @@
+/* miniprogram/pages/nav.wxss */
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 130px;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: row;
+  justify-content:  flex-start;
+  position: fixed;
+  bottom: 100px;
+}
+.btn-driver {
+  margin-right: 20px;
+}
+
+.btn-item {
+  background-color: #00b26a;
+  color: #fff;
+  width: 130px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 20px;
+}

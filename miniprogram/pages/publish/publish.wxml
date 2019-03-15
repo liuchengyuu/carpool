@@ -1,0 +1,13 @@
+<view id='mainWrapper'>
+  <label id='pageTitle'>一键发布行程</label>
+  <label id='chooseTitle'>选择身份</label>
+  <view id='passenger' bindtap='passengerPublish'>
+    <i class="iconfont icon-chengke" style="font-size:88rpx;color:#fff"></i>
+  </view>
+  <label>乘客</label>
+
+  <view id='driver' bindtap='driverPublish'>
+    <i class="iconfont icon-qiche-copy" style="font-size:96rpx;color:#fff"></i>
+  </view>
+  <label>车主</label>
+</view>

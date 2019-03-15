@@ -1,0 +1,33 @@
+<!-- 顶部搜索 -->
+<view class='top-search-wrapper'>
+  <view class='search-item'>
+    <label>出发地：</label>
+    <picker class='address-picker' mode="region" bindchange="bindStaRegionChange" value="{{startRegion}}" custom-item="{{customItem}}">
+      <view class="picker" wx:if="{{startRegion.length === 0}}">
+        选择到达地
+      </view>
+      <view class="picker" wx:else>
+        {{startRegion[0]}} - {{startRegion[1]}} - {{startRegion[2]}}
+      </view>
+    </picker>
+  </view>
+  <view class='search-item'>
+    <label>到达地：</label>
+    <picker class='address-picker' mode="region" bindchange="bindEndRegionChange" value="{{endRegion}}" custom-item="{{customItem}}">
+      <view class="picker" wx:if="{{endRegion.length === 0}}">
+        选择到达地
+      </view>
+      <view class="picker" wx:else>
+        {{endRegion[0]}} - {{endRegion[1]}} - {{endRegion[2]}}
+      </view>
+    </picker>
+  </view>
+</view>
+<!-- 车主&乘客 -->
+<courseSearchResult
+  showType="{{showType}}"
+  courseSearchList="{{courseList}}"
+  bind:getDriverCourse="_getDriverCourse"
+  bind:getPassengerCourse="_getPassengerCourse"
+>
+</courseSearchResult>

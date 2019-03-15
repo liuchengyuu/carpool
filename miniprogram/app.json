@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/personal/personal",
+    "pages/publishMsg/publishMsg",
+    "pages/publish/publish",
+    "pages/courseDetail/courseDetail",
+    "pages/courseSearch/courseSearch",
+    "pages/courseSearch/courseSearchByLoc",
+    "pages/personalCollection/personalCollection",
+    "pages/pubMsgOfDriver/pubMsgOfDriver",
+    "pages/myCourse/myCourse",
+    "pages/aboutUs/aboutUs",
+    "pages/nav/nav"
+  ],
+  "window": {
+    "backgroundColor": "#7A7A7A",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "同城老乡拼车",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#32c9b5",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "搜索",
+        "iconPath": "images/index.png",
+        "selectedIconPath": "images/index-selected.png"
+      },
+      {
+        "pagePath": "pages/publish/publish",
+        "text": "发布",
+        "iconPath": "images/edit.png",
+        "selectedIconPath": "images/edit-selected.png"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "text": "我的",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/my-selected.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+/* miniprogram/pages/public/publish.wxss */
+#mainWrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding-top: 20%;
+  flex-direction: column;
+  text-align: center
+}
+#pageTitle {
+  font-size: 20px;
+}
+
+#chooseTitle {
+  margin-top: 20px;
+}
+#chooseTitle::before {
+  content: '—  ';
+  color: green;
+}
+
+#chooseTitle::after {
+  content: '  —';
+  color: green;
+}
+#passenger, #driver{
+  margin: 20px auto;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 80px;
+  color: #fff;
+  margin-bottom: 10rpx;
+}
+
+#passenger{
+  background-color: #ffe071;
+}
+
+#driver{
+  margin-top: 50rpx;
+  background-color: #8be4a3;
+}

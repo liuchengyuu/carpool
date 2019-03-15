@@ -1,0 +1,116 @@
+/**index.wxss**/
+
+page {
+  height: 100%;
+  background: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#myMap {
+  width: 100%;
+  max-height: 400rpx;
+}
+
+.msg-wrapper {
+  flex: 1;
+  width: 95%;
+  font-size: 32rpx;
+  padding: 16rpx;
+  padding-top: 8rpx;
+  background-color: #fff;
+}
+.userinfo {
+  width: 100%;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-bottom: 1rpx solid #ececec;
+}
+.userinfo-avatar {
+  position: relative;
+  left: 2rpx;
+  margin-top: -30rpx;
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 70px;
+}
+
+.userinfo-nickname {
+  margin-left: 26rpx;
+}
+.item-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: 90rpx;
+  line-height: 90rpx
+}
+.num-wrapper, .price-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: 60rpx;
+  line-height: 60rpx;
+  justify-content: space-between;
+}
+.address-detail {
+  padding: 10rpx 0;
+  font-size: 24rpx;
+  color: #595959;
+}
+.address-wrapper {
+  width: 80%;
+}
+
+.price-num {
+  display: flex;
+  text-align: right;
+  flex-direction: column;
+  height: 160rpx;
+  width: 20%;
+  padding-right: 20rpx;
+}
+.main-info {
+  display: flex;
+  flex-direction: row;
+}
+.price-info {
+  font-size: 40rpx;
+  font-weight: bold;
+}
+.num-info {
+  display: inline-block;
+  width: 30rpx;
+  font-weight: bold;
+}
+
+.end-address {
+  margin-top: 16rpx;
+}
+.btn-group{
+  display: flex;
+  width: 100%;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 32rpx;
+  border-top: 1rpx solid #ececec; 
+  text-align: center;
+}
+.btn-group label{
+  flex: 1;
+  background-color: #fff;
+}
+#starBtn {
+  border-right: 1rpx solid #ececec;
+}
+#callBtn {
+  background-color: #00b26a !important;
+  color: #fff;
+}
+i {
+  margin-right: 20rpx;
+  font-size: 26rpx;
+}
