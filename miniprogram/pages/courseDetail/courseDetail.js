@@ -5,7 +5,7 @@ var QQMapWX = require('../../libs/qqmap-wx-jssdk.js');
 
 // 实例化API核心类
 var demo = new QQMapWX({
-  key: 'H6HBZ-T5LCV-CXFPA-UAJJR-UDJTE-5EB3X' // 必填
+  key: 'IRMBZ-WSV63-4RH35-3RAE2-Y3YB5-OKBEI' // 必填
 });
 
 Page({
@@ -76,7 +76,7 @@ Page({
     let endPos = course.endAddressInfo.latitude + ',' + course.endAddressInfo.longitude;
     var opt = {
       //WebService请求地址，from为起点坐标，to为终点坐标，开发key为必填
-      url: 'https://apis.map.qq.com/ws/direction/v1/driving/?from=' + startPos + '&to=' + endPos + '&key=H6HBZ-T5LCV-CXFPA-UAJJR-UDJTE-5EB3X',
+      url: 'https://apis.map.qq.com/ws/direction/v1/driving/?from=' + startPos + '&to=' + endPos + '&key=IRMBZ-WSV63-4RH35-3RAE2-Y3YB5-OKBEI',
       method: 'GET',
       dataType: 'json',
       //请求成功回调

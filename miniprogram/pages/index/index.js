@@ -6,13 +6,11 @@ var QQMapWX = require('../../libs/qqmap-wx-jssdk.js');
 
 // 实例化API核心类
 var demo = new QQMapWX({
-  key: 'H6HBZ-T5LCV-CXFPA-UAJJR-UDJTE-5EB3X' // 必填
+  key: 'IRMBZ-WSV63-4RH35-3RAE2-Y3YB5-OKBEI' // 必填
 });
 
 // 获取数据库的引用
-const db = wx.cloud.database({
-  env: 'test-f41d36'
-})
+const db = wx.cloud.database()
 
 Page({
   data: {
@@ -64,15 +62,11 @@ Page({
     })
     this.getAllCourseTotal();
     this.bindGetLocation().then(()=>{
-      
-      wx.hideLoading()
-      
-      wx.hideNavigationBarLoading();
-      // 停止下拉动作
-      wx.stopPullDownRefresh();
     });
     // this.getCourseNearby().then(res => {
-      
+      wx.hideLoading()
+      wx.hideNavigationBarLoading();
+      wx.stopPullDownRefresh();
     // });
   },
 
@@ -244,11 +238,10 @@ Page({
       title: '加载中...',
     })
     this.bindGetLocation().then(res => { 
-      wx.hideLoading()
-      wx.hideNavigationBarLoading();
-      // 停止下拉动作
-      wx.stopPullDownRefresh();
     });
+    wx.hideLoading()
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
   },
 
   /**
@@ -262,11 +255,10 @@ Page({
       title: '加载中...',
     })
     this.bindGetLocation().then(res => {
-      wx.hideLoading()
-      wx.hideNavigationBarLoading();
-      // 停止下拉动作
-      wx.stopPullDownRefresh();
     });
+    wx.hideLoading()
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
   },
 
   bindGoDetail: function(e) {

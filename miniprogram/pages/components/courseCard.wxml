@@ -1,5 +1,5 @@
 <!--pages/components/courseCard.wxml-->
-<view bindtap='bindGoDetail' class='msg-card' data-courseObj='{{courseObj}}'>
+<view  class='msg-card' >
     <view class='userinfo'>
       <image class="userinfo-avatar" src='{{courseObj.avatarUrl}}'></image>
       <label class='userinfo-nickname'>{{courseObj.nickName}}</label>
@@ -9,13 +9,19 @@
         <i class="iconfont icon-shijian" style="font-size:24rpx;"></i>
         <view class='datetime'>{{courseObj.date}} {{courseObj.time}}</view>
         <view style='position:absolute;right:50rpx;font-size:24rpx;'>
-          <i class="iconfont icon-juli" style="font-size:24rpx;"></i>
+          <!-- <i class="iconfont icon-juli" style="font-size:24rpx;"></i>
           <label wx:if="{{courseObj.distanceStart}}" style='font-size:22rpx;'>
             距您 起:{{courseObj.distanceStart}}/终:{{courseObj.distanceEnd}}km
           </label>
           <label wx:else>
             距您{{courseObj.distance}}km
-          </label>
+          </label> -->
+          <button bindtap='bindGoDetail' style='font-size:22rpx;' data-courseObj='{{courseObj}}'>
+            查看订单
+          </button>
+          <button bindtap='bindCancel' style='font-size:22rpx;'>
+            取消订单
+          </button>
         </view>
       </view>
       <view class='main-info'>

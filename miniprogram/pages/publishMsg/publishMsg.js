@@ -5,13 +5,11 @@ var QQMapWX = require('../../libs/qqmap-wx-jssdk.js');
 
 // 实例化API核心类
 var demo = new QQMapWX({
-  key: 'H6HBZ-T5LCV-CXFPA-UAJJR-UDJTE-5EB3X' // 必填
+  key: 'IRMBZ-WSV63-4RH35-3RAE2-Y3YB5-OKBEI' // 必填
 });
 
 // 获取数据库的引用
-const db = wx.cloud.database({
-  env: 'test-f41d36'
-})
+const db = wx.cloud.database()
 
 const searchObj = {}
 
@@ -45,21 +43,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log("publishMsg")
     // 获取用户信息
-    wx.getSetting({
-      success: res => {
+    wx.getSetting()
+    .then(res => {
+        console.log("publishMsg - person", res)
         if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              this.setData({
-                avatarUrl: res.userInfo.avatarUrl,
-                nickName: res.userInfo.nickName
-              })
-            }
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框 没有实际有用的名称信息...
+          wx.getUserInfo()
+          .then(res => {
+                console.log("getUserInfo", res)
+                this.setData({
+                  avatarUrl: res.userInfo.avatarUrl,
+                  nickName: res.userInfo.nickName
+                })
           })
         }
-      }
+        else{
+          console.log('您还没有登录呢...')
+        }
+    })
+    .catch(err => {
+      console.log(err)
     })
   },
 
@@ -137,6 +142,7 @@ Page({
      */
     let submitFlag = true;
     let formData = e.detail.value;
+    console.log("当前数据: ", formData)
     for (var Key in formData) {
       if (formData[Key] == "") {
         submitFlag = false;
@@ -237,7 +243,7 @@ Page({
     }
   },
   passengerMsgAdd: function(e) {
-    
+    console.log("新的顾客发布信息啦")
   },
   searchAddress: function(e) {
     console.log(e.detail.value)
@@ -255,9 +261,10 @@ Page({
     });
   },
   bindNumChange: function(e) {
-    console.log(e.detail)
+    let people_num = parseInt(e.detail.value) + 1;
+    console.log(people_num)
     this.setData({
-      index: e.detail.value
+      index: people_num
     })
   },
   /**

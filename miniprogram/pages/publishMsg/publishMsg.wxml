@@ -2,7 +2,7 @@
   latitude="{{latitude}}" 
   longitude="{{longitude}}" 
   markers="{{markers}}"
-  subkey="H6HBZ-T5LCV-CXFPA-UAJJR-UDJTE-5EB3X"
+  subkey="IRMBZ-WSV63-4RH35-3RAE2-Y3YB5-OKBEI"
   show-location
   >
 
@@ -16,11 +16,11 @@
     <view class='input-area'>
       <view class="input-wrapper">
           <label class='start-icon'>起</label>
-          <input bindfocus='bindSelectStart' class='point-input' id='start' name="start" value='{{startAddressInfo.address}}' placeholder='点击选择起点'/>
+          <input bindtap='bindSelectStart' class='point-input' id='start' name="start" value='{{startAddressInfo.address}}' placeholder='点击选择起点'/>
       </view>
       <view class="input-wrapper">
           <label class='end-icon'>终</label>
-          <input bindfocus='bindSelectEnd' class='point-input' id='end' name="end" value='{{endAddressInfo.address}}' placeholder='点击选择终点'/>
+          <input bindtap='bindSelectEnd' class='point-input' id='end' name="end" value='{{endAddressInfo.address}}' placeholder='点击选择终点'/>
       </view>
     </view>
 

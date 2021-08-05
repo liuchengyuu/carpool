@@ -36,6 +36,9 @@ Component({
       wx.navigateTo({
         url: '../courseDetail/courseDetail?course=' + JSON.stringify(courseObj) + '&showType=' + this.data.showType
       })
+    },
+    bindCancel:function(e){
+      // todo 调用云函数，取消订单
     }
   }
 })

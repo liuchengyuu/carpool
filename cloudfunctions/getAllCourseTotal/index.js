@@ -3,9 +3,7 @@ const cloud = require('wx-server-sdk')
 
 cloud.init()
 
-const db = cloud.database({
-  env: 'test-f41d36'
-})
+const db = cloud.database()
 
 const _ = db.command
 const MAX_LIMIT = 100
@@ -23,10 +21,17 @@ exports.main = async (event, context) => {
     tasks.push(promise)
   }
   // 等待所有
-  return (await Promise.all(tasks)).reduce((acc, cur) => {
+  if(tasks.length > 0){
+    return (await Promise.all(tasks)).reduce((acc, cur) => {
+      return {
+        data: acc.data.concat(cur.data),
+        errMsg: acc.errMsg,
+      }
+    })
+  }
+  else{
     return {
-      data: acc.data.concat(cur.data),
-      errMsg: acc.errMsg,
+      data:[]
     }
-  })
+  }
 }
