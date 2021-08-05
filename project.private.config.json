@@ -1,4 +1,5 @@
 {
+  "setting": {},
   "condition": {
     "plugin": {
       "list": []
@@ -21,6 +22,24 @@
           "name": "pages/publishMsg/publishMsg",
           "pathName": "pages/publishMsg/publishMsg",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "登录",
+          "pathName": "pages/register/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "发布",
+          "pathName": "pages/publish/publish",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "乘客信息界面",
+          "pathName": "pages/index/index",
+          "query": "user_id=222&user_phone=222&user_type=passenger",
           "scene": null
         }
       ]

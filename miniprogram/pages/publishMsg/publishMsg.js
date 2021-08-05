@@ -1,5 +1,6 @@
 // miniprogram/pages/publishMsg/publishMsg.js
 
+const app = getApp();
 // 引入SDK核心类
 var QQMapWX = require('../../libs/qqmap-wx-jssdk.js');
 
@@ -36,7 +37,10 @@ Page({
       iconPath: '/image/location.png'
     }],
     date: '',
-    time: ''
+    time: '',
+    phone: '',
+    avatarUrl: '',
+    nickName: ''
   },
 
   /**
@@ -52,10 +56,11 @@ Page({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框 没有实际有用的名称信息...
           wx.getUserInfo()
           .then(res => {
-                console.log("getUserInfo", res)
+                //console.log("getUserInfo", res)
                 this.setData({
                   avatarUrl: res.userInfo.avatarUrl,
-                  nickName: res.userInfo.nickName
+                  nickName: app.globalData.user_id, // res.userInfo.nickName
+                  phone: app.globalData.user_phone
                 })
           })
         }
@@ -144,6 +149,9 @@ Page({
     let formData = e.detail.value;
     console.log("当前数据: ", formData)
     for (var Key in formData) {
+      console.log(Key)
+      if(Key == 'note')
+        continue;
       if (formData[Key] == "") {
         submitFlag = false;
         wx.showModal({
@@ -163,7 +171,10 @@ Page({
       formData.startAddressInfo = this.data.startAddressInfo;
       formData.endAddressInfo = this.data.endAddressInfo;
       formData.avatarUrl = this.data.avatarUrl;
-      formData.nickName = this.data.nickName;
+      // 添加用户！
+      formData.nickName = [];
+      formData.nickName.push(this.data.nickName);
+      
       console.log("###", this.data.avatarUrl)
 
       // 写入行程汇总数据
@@ -261,10 +272,10 @@ Page({
     });
   },
   bindNumChange: function(e) {
-    let people_num = parseInt(e.detail.value) + 1;
+    let people_num = parseInt(e.detail.value); //  + 1
     console.log(people_num)
     this.setData({
-      index: people_num
+      index: people_num + 1
     })
   },
   /**

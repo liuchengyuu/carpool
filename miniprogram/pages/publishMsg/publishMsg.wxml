@@ -33,14 +33,14 @@
             请选择 >
           </view>
           <view class="picker" wx:else> 
-            {{personRange[index]}}
+            {{personRange[index - 1]}}
           </view>
         </picker>
       </view>
-      <view class="input-wrapper">
+      <!-- <view class="input-wrapper">
             <label>可接受价</label>
             <input style='height:35px;flex: 1; text-align: right;padding-right: 20rpx;' type='number' name="price" placeholder='点击输入'/>
-      </view>  
+      </view>   -->
     </view>
   
 
@@ -73,7 +73,7 @@
       </view>
     </view>
     <view class="input-wrapper">
-      <input style='height:35px;' type='number' name="phone" placeholder='请输入联系方式'/>
+      <label> 联系电话：</label> <input style='height:35px;' type='number' name="phone" placeholder='请输入联系方式' value='{{ phone }}'/>
     </view>  
   </view>
 

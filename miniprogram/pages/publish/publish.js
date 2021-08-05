@@ -1,3 +1,5 @@
+var app = getApp();
+
 Page({
 
   /**
@@ -64,9 +66,11 @@ Page({
   },
 
   passengerPublish: function () {
+    app.globalData.user_type = "passenger"
+    console.log(app.globalData.user_type)
     this.getSetting().then(() => {
       wx.navigateTo({
-        url: '../publishMsg/publishMsg'
+        url: '/pages/register/login/login'//url: '../publishMsg/publishMsg'
       })
     }).catch(() => {
       wx.showModal({
@@ -85,9 +89,11 @@ Page({
 
 
   driverPublish: function () {   
+    app.globalData.user_type = "driver"
+    console.log(app.globalData.user_type)
     this.getSetting().then(() => {
       wx.navigateTo({
-        url: '../pubMsgOfDriver/pubMsgOfDriver'
+        url: '/pages/register/login/login'//'../pubMsgOfDriver/pubMsgOfDriver'
       })
     }).catch(() => {
       wx.showModal({

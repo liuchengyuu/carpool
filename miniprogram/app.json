@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/publish/publish",
     "pages/index/index",
     "pages/personal/personal",
     "pages/publishMsg/publishMsg",
-    "pages/publish/publish",
+    
     "pages/courseDetail/courseDetail",
     "pages/courseSearch/courseSearch",
     "pages/courseSearch/courseSearchByLoc",
@@ -11,7 +12,11 @@
     "pages/pubMsgOfDriver/pubMsgOfDriver",
     "pages/myCourse/myCourse",
     "pages/aboutUs/aboutUs",
-    "pages/nav/nav"
+    "pages/nav/nav",
+
+    "pages/register/login/login",
+    "pages/register/register_customer/register_customer",
+    "pages/register/register_driver/register_driver"
   ],
   "window": {
     "backgroundColor": "#7A7A7A",
@@ -30,12 +35,6 @@
         "selectedIconPath": "images/index-selected.png"
       },
       {
-        "pagePath": "pages/publish/publish",
-        "text": "发布",
-        "iconPath": "images/edit.png",
-        "selectedIconPath": "images/edit-selected.png"
-      },
-      {
         "pagePath": "pages/personal/personal",
         "text": "我的",
         "iconPath": "images/my.png",
@@ -45,3 +44,4 @@
   },
   "sitemapLocation": "sitemap.json"
 }
+

@@ -1,4 +1,6 @@
 // pages/components/courseCard.js
+const app = getApp();
+
 Component({
   /**
    * 组件的属性列表
@@ -11,6 +13,10 @@ Component({
     showType: {
       type: Number,
       title: '类型'
+    },
+    user_id: {
+      type: String,
+      title: '当前用户'
     }
   },
 
@@ -18,11 +24,13 @@ Component({
    * 组件的初始数据
    */
   data: {
-
   },
 
   onLoading: function (options) {
-    console.log(options)
+    this.setData({
+      user_id: app.globalData.user_id
+    })
+    console.log("hhhh", this.data)
   },
 
   /**
@@ -30,7 +38,6 @@ Component({
    */
   methods: {
     bindGoDetail: function(e) {
-  
       let courseObj = e.currentTarget.dataset.courseobj
       console.log(e.currentTarget.dataset.courseobj)
       wx.navigateTo({
@@ -39,6 +46,7 @@ Component({
     },
     bindCancel:function(e){
       // todo 调用云函数，取消订单
+      console.log("hhhh", this.data)
     }
   }
 })

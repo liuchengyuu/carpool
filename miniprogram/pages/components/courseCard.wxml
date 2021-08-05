@@ -1,5 +1,7 @@
 <!--pages/components/courseCard.wxml-->
-<view  class='msg-card' >
+<view  class='msg-card' wx:if="{{showType == 0 || ( showType == 1  &&  courseObj.nickName == user_id)}}">
+<!-- showType == 0 代表所有
+     showType == 1  &&  courseObj.nickName == user_id 当前用户的拼车情况 -->
     <view class='userinfo'>
       <image class="userinfo-avatar" src='{{courseObj.avatarUrl}}'></image>
       <label class='userinfo-nickname'>{{courseObj.nickName}}</label>
@@ -46,17 +48,15 @@
         <view class='price-num'>
           <view>
             <label class='price-info'>{{courseObj.price}}</label>
-            <label wx:if="{{showType == 0}}" style='font-size: 24rpx; color:#595959;padding-left:10rpx;'>元</label>
-            <label style='font-size: 24rpx; color:#595959;padding-left:10rpx;' wx:else>元/人</label>  
+            <label  style='font-size: 24rpx; color:#595959;padding-left:10rpx;'>元</label> 
+            <!-- wx:if="{{showType == 0}}" -->
+            <!-- <label style='font-size: 24rpx; color:#595959;padding-left:10rpx;' wx:else>元/人</label>   -->
           </view>
-          <view wx:if="{{showType == 0}}" >
+          <view>
             <label class='num-info'>{{courseObj.personNum}}</label>
             <label style='font-size: 24rpx; color:#595959;padding-left:10rpx;'>位乘客</label>
           </view>
-          <view wx:else>
-            <label style='font-size: 24rpx; color:#595959;padding-left:10rpx;'>余座</label>
-            <label class='num-info'>{{courseObj.surplusSeat}}</label>
-          </view>
+
         </view>
       </view>
     </view>

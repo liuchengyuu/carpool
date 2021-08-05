@@ -10,6 +10,10 @@ App({
       })
     }
 
-    this.globalData = {}
+    this.globalData = {
+      user_id: "",
+      user_phone: "",
+      user_type: ""
+    }
   }
 })

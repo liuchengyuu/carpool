@@ -1,5 +1,5 @@
 //index.js
-const app = getApp()
+var app = getApp()
 
 // 引入SDK核心类
 var QQMapWX = require('../../libs/qqmap-wx-jssdk.js');
@@ -23,30 +23,44 @@ Page({
     msgList: [],
     courseTotalList: [],
     locationInfo: '',
-    showType: 0
+    showType: 0,
+    user_id: ''
+  },
+  // 解析跳转参数
+  parseOptions: function(options){
+    app.globalData.user_type = options.user_type;
+
+    if(options.user_type == 'passenger'){
+      app.globalData.user_id = options.user_id;
+      app.globalData.user_phone = options.user_phone;
+    }
+    else{
+      // TODO 车主信息
+    }
+    // 
+    this.setData({
+      user_id: app.globalData.user_id
+    });
+    // console.log(this.data);
+    
   },
 
-  onLoad: function() {
+  onLoad: function(options) {
     if (!wx.cloud) {
       wx.redirectTo({
         url: '../chooseLib/chooseLib',
       })
       return
     }
+    // 跳转读出参数...
+    this.parseOptions(options);
 
     wx.showLoading({
       title: '加载中...',
     })
     
     this.getAllCourseTotal();
-
-    //
-    this.bindGetLocation();
-    // this.getCourseNearby().then(res => {
-    // setTimeout(function () {
-    //   wx.hideLoading()
-    // }, 500);
-    // });
+    this.bindGetLocation(false);
   },
   onReady: function () {
     //获得dialog组件
@@ -57,11 +71,15 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    let only_myself = false;
+    if(this.data.showType == 1){
+      only_myself = true;
+    }
     wx.showLoading({
       title: '加载中...',
     })
     this.getAllCourseTotal();
-    this.bindGetLocation().then(()=>{
+    this.bindGetLocation(only_myself).then(()=>{
     });
     // this.getCourseNearby().then(res => {
       wx.hideLoading()
@@ -142,11 +160,13 @@ Page({
   },
 
   /**
-   * 
+   * @brief 获取周边拼车情况
+   * @params only_myself
    */
-  bindGetLocation: function () {
+  bindGetLocation: function (only_myself = false) {
     let _this = this;
     return new Promise(resolve => {
+      // 获取当前本人定位！
       wx.getLocation({
         type: 'wgs84',
         success(res) {
@@ -180,7 +200,9 @@ Page({
         latitude: res.result.location.lat,
         longitude: res.result.location.lng
       }
-    
+      
+      console.log("only_myself", only_myself);
+      console.log("this.data.showType", this.data.showType);
       // 调用云函数
       wx.cloud.callFunction({
         name: 'getCourseByDistrict',
@@ -195,6 +217,8 @@ Page({
           showType: this.data.showType
         },
       }).then(res => {
+        // 返回所有来自同一个城市、同一个区的拼车信息
+
         let courseList = res.result.data;
         // 计算距离信息
         if (res.result.data.length > 0) {
@@ -207,13 +231,14 @@ Page({
             })
           }
 
-          // 请求api，获取距离信息  
+          // 请求api，获取距离信息， 计算起点的距离
           demo.calculateDistance({
             from: curLocation,
             to: startAddressArr,
             success: function (res) {
               let distanceArr = res.result.elements;
               for (let i = 0; i < distanceArr.length; i++) {
+                // 距离在1000m以内？
                 courseList[i].distance = (distanceArr[i].distance / 1000).toFixed(2);
               }
               _this.setData({
@@ -228,7 +253,16 @@ Page({
   },
 
   /**
-   * 附近乘客
+   * @brief 开启新的拼车
+   */
+  startNewPinChe: function(options){
+    wx.navigateTo({
+      url: '/pages/publishMsg/publishMsg', // 乘客拼车发起页
+    })
+  },
+  /**
+   * @brief 附近乘客
+   * @params only_myself (1 -> 只打印我自己的)
    */
   bindGetPassengerNearby: function () {
     this.setData({
@@ -237,7 +271,26 @@ Page({
     wx.showLoading({
       title: '加载中...',
     })
-    this.bindGetLocation().then(res => { 
+    this.bindGetLocation(false).then(res => { 
+    });
+    wx.hideLoading()
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
+  },
+  /**
+   * @brief 获取我发起的拼车
+   */
+  bindMyCourse: function(){
+    let only_myself = true;
+    this.setData({
+      showType: 1
+    })
+    wx.showLoading({
+      title: '加载中...',
+    })
+    console.log("bindMyCourse");
+    
+    this.bindGetLocation(only_myself).then(res => {
     });
     wx.hideLoading()
     wx.hideNavigationBarLoading();

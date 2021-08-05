@@ -53,7 +53,7 @@
     </view>
 
     <view class='price-wrapper'>
-        <view class='datetime'><i class="iconfont icon-4" style=""></i>可接受价</view>
+        <view class='datetime'><i class="iconfont icon-4" style=""></i>车费</view>
         <view>  
           <label class='num-info'>{{courseInfo.price}}</label>
           <label style='font-size: 24rpx; color:#595959;padding-left:10rpx;'>元</label>
@@ -72,7 +72,7 @@
     已收藏
   </label>
   <label wx:else bindtap='bindCollectCourse' id='starBtn'>收藏</label>
-  <label id='shareBtn'>分享</label>
+  <label id='shareBtn'>拼车加入</label>
   <label id='callBtn' bindtap='bindCallPhone' data-phone='{{courseInfo.phone}}'>联系TA</label>
 </view>
 </view>
