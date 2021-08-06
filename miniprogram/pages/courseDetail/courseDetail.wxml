@@ -41,13 +41,13 @@
 
     <view class='num-wrapper' style='margin-top:30rpx' >
         <view class='' wx:if="{{showType == 0}}">
-          <i class="iconfont icon-renshu" style="color:grey;"></i>人数
+          <i class="iconfont icon-renshu" style="color:grey;"></i>总人数
         </view>
-        <view class='' wx:else>
+        <!-- <view class='' wx:else>
           <i class="iconfont icon-renshu" style="color:grey;"></i>余座
-        </view>
+        </view> -->
         <view>  
-          <label class='num-info'>{{courseInfo.personNum}}</label>
+          <label class='num-info'>{{courseInfo.personTotalNum}}</label>
           <label style='font-size: 24rpx; color:#595959;padding-left:10rpx;'>人</label>
         </view>
     </view>
@@ -59,6 +59,14 @@
           <label style='font-size: 24rpx; color:#595959;padding-left:10rpx;'>元</label>
         </view>
     </view>
+
+<!-- 用户组列表 -->
+<view>
+  <text> 拼车用户组详情 </text> 
+  <view wx:for="{{courseInfo.personNum}}" wx:for-index="idx" wx:for-item="each_person">
+    用户：{{courseInfo.nickName[idx]}}   该组人数：{{each_person}} 
+   </view>
+</view>
 
   
     <view class='item-wrapper' style='margin-top:30rpx;height:80px;font-size:28rpx;'>
@@ -72,7 +80,15 @@
     已收藏
   </label>
   <label wx:else bindtap='bindCollectCourse' id='starBtn'>收藏</label>
-  <label id='shareBtn'>拼车加入</label>
+
+  <label wx:if='{{ courseInfo.startedBy && user_type == "passenger" }}' id='shareBtn' bindtap='bindCancelCourse' >取消订单</label>
+  <label wx:elif = '{{ courseInfo.isFull && user_type == "passenger" }}' id='shareBtn' > 该订单已满 </label>
+  <label wx:elif = '{{ user_type == "passenger" }}' id='shareBtn' bindtap='bindJoinCourse' >拼车加入</label>
+  
+  <label wx:if='{{ courseInfo.acceptBy == user_id && user_type == "driver" }}' id='shareBtn' bindtap='bindCancelOrdering' >取消订单</label>
+  <label wx:elif = '{{ courseInfo.acceptBy == "" && user_type == "driver" }}' id='shareBtn' bindtap='bindAcceptOrdering' >接收订单</label>
+
+
   <label id='callBtn' bindtap='bindCallPhone' data-phone='{{courseInfo.phone}}'>联系TA</label>
 </view>
 </view>

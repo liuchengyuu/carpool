@@ -26,7 +26,10 @@ Page({
     showType: 0,
     user_id: ''
   },
-  // 解析跳转参数
+  /** 
+   * @brief 解析跳转参数
+   * @note 用户类型 用户id 等信息被放到了app.globalData中
+   * */ 
   parseOptions: function(options){
     app.globalData.user_type = options.user_type;
 
@@ -36,12 +39,16 @@ Page({
     }
     else{
       // TODO 车主信息
+      app.globalData.user_id = options.user_id;
+      app.globalData.user_phone = options.user_phone;
     }
     // 
     this.setData({
-      user_id: app.globalData.user_id
+      user_id: app.globalData.user_id,
+      user_phone: options.user_phone,
+      user_type: app.globalData.user_type
     });
-    // console.log(this.data);
+    console.log(this.data);
     
   },
 
@@ -55,10 +62,15 @@ Page({
     // 跳转读出参数...
     this.parseOptions(options);
 
+ 
+  },
+  onShow: function(){
     wx.showLoading({
       title: '加载中...',
     })
     
+    console.log(this.data);
+
     this.getAllCourseTotal();
     this.bindGetLocation(false);
   },
@@ -298,7 +310,8 @@ Page({
   },
 
   /**
-   * 附近司机
+   * 附近司机 
+   * @note 取消使用
    */
   bindGetDriverNearby: function () {
     this.setData({
@@ -314,8 +327,12 @@ Page({
     wx.stopPullDownRefresh();
   },
 
+  /**
+   * @brief 查看详情
+   */
   bindGoDetail: function(e) {
     let course = e.currentTarget.dataset.course
+    console.log("bindGoDetail ", JSON.stringify(course));
     wx.navigateTo({
       url: '../courseDetail/courseDetail?course=' + JSON.stringify(course)
     })

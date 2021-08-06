@@ -1,18 +1,31 @@
-// miniprogram/pages/register/register_driver/register_driver.js
+// miniprogram/pages/register/register_customer/register_customer.js
+
+// 获取数据库的引用
+const db = wx.cloud.database()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    // 通过bind函数来同步修改这些值
+    user_type: '',
+    user_id: '',
+    password: '',
+    user_name:'',
+    car_number: '',
+    phone_number: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      user_type: options.id
+    })
+    // console.log(this.data);
   },
 
   /**
@@ -20,6 +33,60 @@ Page({
    */
   onReady: function () {
 
+  },
+
+  /* 简单的同步更新表单数据 */
+  inputUserId: function(e){
+    this.setData({
+      user_id: e.detail.value
+    })
+  },
+  inputPassword: function(e){
+    this.setData({
+      password: e.detail.value
+    })
+  },
+  inputPhone: function(e){
+    this.setData({
+      phone_number: e.detail.value
+    })
+  },
+  inputCarNumber: function(e){
+    this.setData({
+      car_number: e.detail.value
+    })
+  },
+  inputRealName: function(e){
+    this.setData({
+      user_name: e.detail.value
+    })
+  },
+
+  /* 点击注册按钮，修改数据库内容 */
+  loginEvent: function(options){
+    console.log(this.data)
+    //! TODO: 添加用户名的重复检查？ 表单项目不为空的检查...
+    db.collection('dirverInfo')
+    .add({
+      data:{
+        user_id: this.data.user_id,
+        password: this.data.password,
+        phone: this.data.phone_number,
+        car_number: this.data.car_number,
+        user_name: this.data.user_name,
+        car_number: "5"
+      }
+    })
+    .then(res => {
+      console.log("插入新driver: ", res);
+      // 成功后重新调回登录页面
+      wx.navigateBack({
+        delta: 0,
+      })
+    })
+    .catch(err => {
+      console.log("失败：", err);
+    })
   },
 
   /**

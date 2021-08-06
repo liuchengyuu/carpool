@@ -175,6 +175,12 @@ Page({
       formData.nickName = [];
       formData.nickName.push(this.data.nickName);
       
+      let tmp = formData.personNum;
+      formData.personNum = [];
+      formData.personNum.push(tmp);
+
+      formData.acceptBy = '';
+
       console.log("###", this.data.avatarUrl)
 
       // 写入行程汇总数据
@@ -245,11 +251,17 @@ Page({
           duration: 1000
         })
         // 跳转行程搜索结果页面
-        setTimeout(function() {
-          wx.redirectTo({
-            url: '../courseSearch/courseSearchByLoc?searchObj=' + JSON.stringify(searchObj),
-          })
-        }, 1000)
+        // setTimeout(function() {
+        //   wx.redirectTo({
+        //     url: '../courseSearch/courseSearchByLoc?searchObj=' + JSON.stringify(searchObj),
+        //   })
+        // }, 1000)
+
+      // 成功后重新调回信息查看页面
+      wx.navigateBack({
+        delta: 0,
+      })
+
       })
     }
   },

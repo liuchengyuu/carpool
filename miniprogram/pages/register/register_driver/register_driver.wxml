@@ -1,2 +1,29 @@
-<!--miniprogram/pages/register/register_driver/register_driver.wxml-->
-<text>miniprogram/pages/register/register_driver/register_driver.wxml</text>
+
+<text> {{user_type}} </text>
+
+<view class="input-wrapper">
+            <label>账号</label>
+            <input style='height:35px;flex: 1; text-align: right;padding-right: 20rpx;' bindinput="inputUserId" type='text' name="my_userid" placeholder='user_id'/>
+</view>
+<view class="input-wrapper">
+            <label>密码</label>
+            <input style='height:35px;flex: 1; text-align: right;padding-right: 20rpx;' bindinput="inputPassword" type='text' name="my_password" placeholder='password'/>
+</view>
+<view class="input-wrapper">
+            <label>电话</label>
+            <input style='height:35px;flex: 1; text-align: right;padding-right: 20rpx;' bindinput="inputPhone" type='text' name="my_phone" placeholder='phone_number'/>
+</view>
+
+<view class="input-wrapper">
+            <label>车牌号</label>
+            <input style='height:35px;flex: 1; text-align: right;padding-right: 20rpx;' bindinput="inputCarNumber" type='text' name="my_car" placeholder='car_number'/>
+</view>
+
+<view class="input-wrapper">
+            <label>车主姓名</label>
+            <input style='height:35px;flex: 1; text-align: right;padding-right: 20rpx;' bindinput="inputRealName" type='text' name="my_name" placeholder='real_name'/>
+</view>
+
+<button bindtap="loginEvent">
+注册
+</button>    

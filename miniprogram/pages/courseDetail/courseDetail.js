@@ -2,6 +2,9 @@
 
 
 var QQMapWX = require('../../libs/qqmap-wx-jssdk.js');
+const app = getApp();
+
+var db = wx.cloud.database();
 
 // 实例化API核心类
 var demo = new QQMapWX({
@@ -11,6 +14,11 @@ var demo = new QQMapWX({
 Page({
   data: {
     courseInfo: {},
+
+    personThreshold: 4,
+    user_id:'',
+    user_type:'',
+
     isCollected: false,
     latitude: '34.79977',
     longitude: '113.66072',
@@ -33,6 +41,7 @@ Page({
     console.log(options)
     let _this = this;
     let course = JSON.parse(options.course);
+    
     
     this.setData({
       showType: options.showType,
@@ -58,6 +67,37 @@ Page({
           longitude: course.endAddressInfo.longitude,
       }]
     })
+
+    // 其中 courseInfo 记录了行程的绝大部分信息
+    console.log(this.data);
+    // 人数求和
+    let personTotalNum = 0;
+    for(let i = 0 ; i < course.personNum.length; i ++ ){
+      personTotalNum += course.personNum[i];
+    }
+    course.personTotalNum = personTotalNum;
+
+    // 是否已经满员
+    course.isFull = false;
+    if(this.data.personThreshold <= personTotalNum){
+      course.isFull = true;
+    }
+    
+    // 判断是否已经在订单里
+    course.startedBy = false;
+    for(let i = 0 ; i < course.nickName.length; i ++ ){
+      if(course.nickName[i] == app.globalData.user_id){
+        course.startedBy = true;
+        break;
+      }
+    }
+
+    // 必须通过setData才能改变相应的值
+    this.setData({
+      courseInfo:course,
+      user_type: app.globalData.user_type,
+      user_id: app.globalData.user_id
+    });
 
     wx.cloud.callFunction({
       name: 'getIsCollectedCourse',
@@ -106,7 +146,92 @@ Page({
     };
     wx.request(opt);
   },
+  /**
+   * @brief 添加
+   */
+  bindJoinCourse: function(options){
+    let course =  this.data.courseInfo;
+    course.personNum.push(1);
+    course.nickName.push(app.globalData.user_id);
 
+    // TODO 拼车加入，少一个云函数
+
+  },
+  /**
+   * @biref 退出
+   */
+  bindCancelCourse: function(options){
+    let i = 0;
+    let course =  this.data.courseInfo;
+    for(; i < course.nickName.length; i ++ ){
+      if(course.nickName[i] == app.globalData.user_id){
+        break;
+      }
+    }
+    course.personNum.splice(i, 1);
+    course.nickName.splice(i, 1);
+
+    if(course.personNum.length == 0){
+      // TODO 删除这条订单记录，少一个云函数
+      
+    }
+
+  },
+
+  /**
+   * @brief 司机的活动
+   * @note 需要修改两个表，passenger中acceptBy 改为接收订单的司机id
+   *                      driverMsg中新增或删除订单信息
+   */
+  bindCancelCourse: function(options){
+    // TODO 司机取消订单
+  },
+
+  bindAcceptOrdering: function(options){
+    // 司机接收订单
+    console.log("司机接收订单");
+
+    let course = this.data.courseInfo;
+    console.log(course);
+    // 改为接收订单的司机id
+    course.acceptBy = app.globalData.user_id;
+
+    // 添加一个云函数，修改表
+    wx.cloud.callFunction({
+      name: 'bindAcceptOrdering',
+      data: {
+        course_id:course._id,
+        acceptBy:course.acceptBy
+      },
+    })
+    .then(res => {
+      console.log("成功修改acceptBy", res);
+    })
+    .catch(err => {
+      console.log("修改acceptBy出错", err);
+    });
+
+    // 增加订单记录
+    db.collection('driverMsg')
+    .add({
+      data:{
+        user_id: app.globalData.user_id,
+        course_id: course._id
+      }
+    })
+    .then(res => {
+      console.log("新增driverMsg: ", res);
+      wx.navigateBack({
+        delta: 0,
+      })
+    })
+    .catch(err => {
+      console.log("新增driverMsg失败: ", err);
+    });
+
+
+  },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

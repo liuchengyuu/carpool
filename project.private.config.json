@@ -39,7 +39,19 @@
         {
           "name": "乘客信息界面",
           "pathName": "pages/index/index",
-          "query": "user_id=222&user_phone=222&user_type=passenger",
+          "query": "user_id=444&user_phone=444&user_type=passenger",
+          "scene": null
+        },
+        {
+          "name": "司机注册",
+          "pathName": "pages/register/register_driver/register_driver",
+          "query": "id=driver",
+          "scene": null
+        },
+        {
+          "name": "司机界面",
+          "pathName": "pages/index/index",
+          "query": "user_id=555&user_phone=555&user_type=driver",
           "scene": null
         }
       ]

@@ -19,19 +19,27 @@ Component({
       title: '当前用户'
     }
   },
-
   /**
    * 组件的初始数据
    */
   data: {
+    user_type:''
+  },
+  /**
+   * onLoad 不执行！于是以下方式
+   */
+  lifetimes: {
+    attached: function(options) {
+      // 在组件实例进入页面节点树时执行
+      this.setData({
+        user_type: app.globalData.user_type
+      })
+      console.log("我爱你中国", this.data);
+      
+    }
   },
 
-  onLoading: function (options) {
-    this.setData({
-      user_id: app.globalData.user_id
-    })
-    console.log("hhhh", this.data)
-  },
+
 
   /**
    * 组件的方法列表
