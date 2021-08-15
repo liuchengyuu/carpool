@@ -35,11 +35,52 @@
   margin-bottom: 10rpx;
 }
 
-#passenger{
-  background-color: #ffe071;
+
+
+.credit_icon{
+  height: 80px;
+  width: 80px;
+  border-radius: 90px;
 }
 
-#driver{
-  margin-top: 50rpx;
-  background-color: #8be4a3;
+.my-font{
+
+  color: rgb(133,181,201);
+}
+.bg {
+  position: absolute;
+  width: 750rpx;
+  height: 1100rpx;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.tr {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 3rem;
+  align-items: center;
+}
+.td {
+    width:40%;
+    justify-content: center;
+    text-align: center;
+}
+
+.th {
+  
+  width: 40%;
+  justify-content: center;
+  display: flex;
+  height: 200px;
+  align-items: center;
+}
+
+.credit_lable {
+  background-color: rgb(141,216,255);
+  color: #fff;
+  padding: 5px;
+  border-radius: 10px;
 }
