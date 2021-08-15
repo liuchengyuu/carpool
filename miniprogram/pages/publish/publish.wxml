@@ -1,3 +1,6 @@
+<!-- 首页 -->
+
+
 <view id='mainWrapper'>
   <label id='pageTitle'>一键发布行程</label>
   <label id='chooseTitle'>选择身份</label>

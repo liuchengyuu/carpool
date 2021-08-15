@@ -25,8 +25,8 @@ Page({
     longitude: '113.66072',
     startAddressInfo: '',
     endAddressInfo: '',
-    personRange:[1, 2, 3, 4, 5, 6],
-    index: -1,
+    personRange:[1, 2, 3, 4],
+    index: 1,
     covers: [{
       latitude: 23.099994,
       longitude: 113.344520,
@@ -170,6 +170,17 @@ Page({
       })
       formData.startAddressInfo = this.data.startAddressInfo;
       formData.endAddressInfo = this.data.endAddressInfo;
+
+      let _this = this;
+      //计算距离
+      let CourseDistance = _this.getDistance(this.data.startAddressInfo.latitude,this.data.startAddressInfo.longitude,this.data.endAddressInfo.latitude,this.data.endAddressInfo.longitude);
+  
+      //计算价格
+      let CoursePrice = _this.calPrice(CourseDistance);
+
+      formData.price = CoursePrice;
+
+
       formData.avatarUrl = this.data.avatarUrl;
       // 添加用户！
       formData.nickName = [];
@@ -266,8 +277,44 @@ Page({
     }
   },
   passengerMsgAdd: function(e) {
+
     console.log("新的顾客发布信息啦")
   },
+
+  Rad: function(d) { //根据经纬度判断距离
+    return d * Math.PI / 180.0;
+},
+
+getDistance: function(lat1, lng1, lat2, lng2) {
+  // lat1起点的纬度
+  // lng1起点的经度
+  // lat2终点的纬度
+  // lng2终点的经度
+  var radLat1 = this.Rad(lat1);
+  var radLat2 = this.Rad(lat2);
+  var a = radLat1 - radLat2;
+  var b = this.Rad(lng1) - this.Rad(lng2);
+  var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
+  s = s * 6378.137;
+  s = Math.round(s * 10000) / 10000;
+  var str = s.toFixed(2) + '公里' //保留两位小数
+  console.log('经纬度计算的距离:' + str)
+  return s
+},
+calPrice:function(dis){//根据里程计算价格
+  var res = 0;
+  if(dis<=1)
+  {
+    res = 9.6;
+  }
+  else
+  {
+    res = 9.6 + 3.2*(dis-1);
+  }
+  res = res.toFixed(2);
+  return res;
+},
+
   searchAddress: function(e) {
     console.log(e.detail.value)
     demo.getSuggestion({

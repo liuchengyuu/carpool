@@ -17,12 +17,18 @@
     "pages/register/register_customer/register_customer",
     "pages/register/register_driver/register_driver"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "授权当前位置" 
+    }
+  },
   "window": {
     "backgroundColor": "#7A7A7A",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "同城老乡拼车",
-    "navigationBarTextStyle": "black"
+    "navigationBarTitleText": "同城拼车 (BY GROUP 2)",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "selectedColor": "#32c9b5",

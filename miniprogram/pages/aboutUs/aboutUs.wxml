@@ -1,1 +1,13 @@
-<view></view>
+<view>
+    <text space="emsp">
+小组成员：\n
+          郑秋实
+          李 辉
+          孙一赛
+          雷丁瑞
+          刘 兵
+          刘家聪
+          
+        pinche ©️ 2021
+    </text>
+</view>
