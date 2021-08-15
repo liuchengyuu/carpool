@@ -1,4 +1,6 @@
-<!-- <map id="myMap" 
+<!-- 发布拼车页 -->
+
+<map id="myMap" 
   latitude="{{latitude}}" 
   longitude="{{longitude}}" 
   markers="{{markers}}"
@@ -6,7 +8,7 @@
   show-location
   >
 
-</map> -->
+</map>
 
 
 
@@ -29,7 +31,7 @@
       <view class="input-wrapper">
         <label>人数：</label>
         <picker name="personNum" bindchange="bindNumChange" value='{{index}}' mode="selector" range="{{personRange}}" style='height:35px;flex: 1; text-align: right;padding-right: 20rpx;'>
-          <view class="picker" wx:if="{{index == -1}}">
+          <view class="picker" wx:if="{{index == 1}}">
             请选择 >
           </view>
           <view class="picker" wx:else> 

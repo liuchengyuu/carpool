@@ -1,3 +1,6 @@
+<!-- 我的行程 -->
+
+
 <!--miniprogram/pages/personalCollection.wxml-->
 <courseSearchResult
   id='searchResult'

@@ -1,8 +1,19 @@
+<!-- 乘客、司机页面  -->
+<!-- 当是乘客时，有以下两种情况：
+     showType == 0 代表所有
+     showType == 1  &&  courseObj.nickName == user_id 当前用户的拼车情况 
+     
+     当是车主时，有以下两种情况：
+     showType == 0 && courseObj.acceptBy == '' ： 代表所有未被接收的订单
+     showType == 1  &&  courseObj.acceptBy == user_id： 代表当前用户的接单情况
+     -->
+
+
 <!--index.wxml-->
 <view class="container">
 
-<text wx:if="{{ user_type == 'passenger' }}"> 乘客，您好</text>
-<text wx:else> 司机，您好</text>
+<text wx:if="{{ user_type == 'passenger' }}"> 亲爱的乘客，您好</text>
+<text wx:else> 亲爱的司机，您好</text>
 
   <view class='menu-bar'>
     <view class='menu-title'>

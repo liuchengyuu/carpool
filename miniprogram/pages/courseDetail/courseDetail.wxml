@@ -1,15 +1,20 @@
 <!--miniprogram/pages/courseDetail/courseDetail.wxml-->
-<view class='container' style='width:100%;height:100%'>
-  <map id="myMap" 
+<map id="myMap" 
   latitude="{{latitude}}" 
   longitude="{{longitude}}" 
   markers="{{markers}}"
   subkey="IRMBZ-WSV63-4RH35-3RAE2-Y3YB5-OKBEI"
   polyline="{{polyline}}"
-  include-points="{{includePoints}}"
+  include-points="{{currentCities}}"
   show-location
   >
-</map>
+  </map> 
+
+
+
+<view class='container' style='width:100%;height:100%'>
+   
+
 
 <view class='msg-wrapper'>
   <!-- 个人信息 -->
@@ -46,7 +51,7 @@
         <!-- <view class='' wx:else>
           <i class="iconfont icon-renshu" style="color:grey;"></i>余座
         </view> -->
-        <view>  
+        <view>   
           <label class='num-info'>{{courseInfo.personTotalNum}}</label>
           <label style='font-size: 24rpx; color:#595959;padding-left:10rpx;'>人</label>
         </view>
@@ -56,7 +61,7 @@
         <view class='datetime'><i class="iconfont icon-4" style=""></i>车费</view>
         <view>  
           <label class='num-info'>{{courseInfo.price}}</label>
-          <label style='font-size: 24rpx; color:#595959;padding-left:10rpx;'>元</label>
+          <label style='font-size: 24rpx; color:#595959;padding-left:80rpx;'>元</label>
         </view>
     </view>
 
@@ -64,7 +69,7 @@
 <view>
   <text> 拼车用户组详情 </text> 
   <view wx:for="{{courseInfo.personNum}}" wx:for-index="idx" wx:for-item="each_person">
-    用户：{{courseInfo.nickName[idx]}}   该组人数：{{each_person}} 
+    <text space="emsp">用户：{{courseInfo.nickName[idx]}}   该组人数：{{each_person}} </text>
    </view>
 </view>
 
@@ -85,7 +90,7 @@
   <label wx:elif = '{{ courseInfo.isFull && user_type == "passenger" }}' id='shareBtn' > 该订单已满 </label>
   <label wx:elif = '{{ user_type == "passenger" }}' id='shareBtn' bindtap='bindJoinCourse' >拼车加入</label>
   
-  <label wx:if='{{ courseInfo.acceptBy == user_id && user_type == "driver" }}' id='shareBtn' bindtap='bindCancelOrdering' >取消订单</label>
+  <label wx:if='{{ courseInfo.acceptBy == user_id && user_type == "driver" }}' id='shareBtn' bindtap='bindCancelCourse' >取消订单</label>
   <label wx:elif = '{{ courseInfo.acceptBy == "" && user_type == "driver" }}' id='shareBtn' bindtap='bindAcceptOrdering' >接收订单</label>
 
 
@@ -93,5 +98,5 @@
 </view>
 </view>
 
-<!-- 
-<map id="myMap" longitude="113.324520" latitude="23.099994" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: 300px;"></map> -->
+
+<!-- <map id="myMap" longitude="113.324520" latitude="23.099994" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: 300px;"></map> -->

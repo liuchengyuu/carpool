@@ -4,31 +4,34 @@
 var QQMapWX = require('../../libs/qqmap-wx-jssdk.js');
 const app = getApp();
 
-var db = wx.cloud.database();
+var db = wx.cloud.database();  // 连接数据库
 
 // 实例化API核心类
-var demo = new QQMapWX({
-  key: 'IRMBZ-WSV63-4RH35-3RAE2-Y3YB5-OKBEI' // 必填
+var qqmapsdk  = new QQMapWX({
+  key: 'IRMBZ-WSV63-4RH35-3RAE2-Y3YB5-OKBEI' // 必填，地图
 });
+
+
 
 Page({
   data: {
-    courseInfo: {},
+    courseInfo: {}, //路线信息
 
     personThreshold: 4,
     user_id:'',
     user_type:'',
 
     isCollected: false,
-    latitude: '34.79977',
-    longitude: '113.66072',
+    latitude: '31.28711',
+    longitude: '121.213904',
+
     covers: [{
-      latitude: 23.099994,
-      longitude: 113.344520,
+      latitude: 30.099994,
+      longitude: 119.344520,
       iconPath: '/image/location.png'
     }, {
-      latitude: 23.099994,
-      longitude: 113.304520,
+      latitude: 32.099994,
+      longitude: 123.304520,
       iconPath: '/image/location.png'
     }],
     polyline:[]
@@ -41,8 +44,8 @@ Page({
     console.log(options)
     let _this = this;
     let course = JSON.parse(options.course);
-    
-    
+
+
     this.setData({
       showType: options.showType,
       courseInfo: course,     
@@ -59,7 +62,8 @@ Page({
           height: 50,
           label: '终点'
       }],
-      includePoints: [{   
+      includePoints: 
+      [{   
         latitude: course.startAddressInfo.latitude,
         longitude: course.startAddressInfo.longitude,    
       }, {
@@ -146,6 +150,7 @@ Page({
     };
     wx.request(opt);
   },
+
   /**
    * @brief 添加
    */
@@ -155,6 +160,17 @@ Page({
     course.nickName.push(app.globalData.user_id);
 
     // TODO 拼车加入，少一个云函数
+    wx.cloud.callFunction({
+      name:'bindJoin', 
+      data:{
+        the_id:options.currentTarget.dataset.courseobj._id,
+        personNum:course.personNum,
+        nickName:course.nickName
+      }
+        
+    }).then(res=>{
+      console.log('云函数2',res);
+    })
 
   },
   /**
@@ -173,6 +189,15 @@ Page({
 
     if(course.personNum.length == 0){
       // TODO 删除这条订单记录，少一个云函数
+      wx.cloud.callFunction({
+        name:'bindCancel', 
+        data:{
+          the_id:options.currentTarget.dataset.courseobj._id
+        }
+          
+      }).then(res=>{
+        console.log('云函数1',res);
+      })
       
     }
 

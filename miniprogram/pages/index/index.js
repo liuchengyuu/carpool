@@ -79,10 +79,30 @@ Page({
     this.courseCard = this.selectComponent("#courseCard");
   },
   
+  // onPullDownRefresh: function () {
+  //   console.log('下拉刷新');
+  //   //设置触发事件时间效果方法
+  //   setTimeout(()=>{
+  //     // 在此调取接口
+  //     wx.showNavigationBarLoading(); // 显示顶部刷新图标
+  //     wx.redirectTo({ //关闭当前页面跳转到目标页面，注意tabbar页面无法跳转！
+  //       url: '/pages/index/index', //加载页面地址
+  //       success:function(res){ //调用成功时
+  //         wx.stopPullDownRefresh({ // 数据请求成功后，关闭刷新。如果不加这个接口，刷新的动画效果时间使用系统默认设置时间
+  //           success (res) { //调用成功时
+  //               console.log('刷新成功');
+  //           }
+  //         })
+  //       }
+  //     })
+  //   }, 500) //单位“毫秒”，设置多久后开始触发刷新效果
+  // },
+
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    let _this = this;
     let only_myself = false;
     if(this.data.showType == 1){
       only_myself = true;
@@ -93,11 +113,13 @@ Page({
     this.getAllCourseTotal();
     this.bindGetLocation(only_myself).then(()=>{
     });
-    // this.getCourseNearby().then(res => {
+    _this.onReady();
+    setTimeout(() => {
       wx.hideLoading()
       wx.hideNavigationBarLoading();
       wx.stopPullDownRefresh();
-    // });
+      console.log("加载成功");
+    }, 500);
   },
 
   getAllCourseTotal: function () {

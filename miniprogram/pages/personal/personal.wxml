@@ -1,3 +1,5 @@
+<!-- 我的 -->
+
 <view class='container'>
   <view class='userinfo-wrapper'>
     <open-data class="userinfo-avatar" type="userAvatarUrl"></open-data>
