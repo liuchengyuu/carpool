@@ -19,7 +19,7 @@
 <view class='msg-wrapper'>
   <!-- 个人信息 -->
   <view class='userinfo'>
-    <image class="userinfo-avatar" src='{{courseInfo.avatarUrl}}'></image>
+    <image class="userinfo-avatar" src='../index/用户.png'></image>
     <label class='userinfo-nickname'></label>
     <label wx:if="{{showType == 1}}" style='margin-left:20rpx;font-size: 24rpx;color:#595959'>
       {{courseInfo.carNum}}  {{courseInfo.carInfo}}

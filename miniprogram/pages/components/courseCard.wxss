@@ -8,7 +8,7 @@
   padding: 16rpx;
   padding-top: 8rpx;
   border-radius: 20rpx;
-  background-color: #fff;
+  background-color: rgb(153, 208, 218);
 
 }
 .my-order{
@@ -26,6 +26,8 @@
   height: 70rpx;
   line-height: 70rpx;
   border-bottom: 1rpx solid #ececec;
+  background-color: rgba(176, 233, 243, 0.349);
+  border-radius:10px;
 }
 .userinfo-avatar {
   position: relative;
@@ -43,7 +45,9 @@
   display: flex;
   flex-direction: row;
   height: 90rpx;
-  line-height: 90rpx
+  line-height: 90rpx;
+  background-color: rgba(176, 233, 243, 0.349);
+  border-radius:10px;
 }
 .datetime {
   margin-left: 10rpx;
@@ -95,17 +99,33 @@
   width: 30rpx;
   font-weight: bold;
 }
-
 .end-address {
   margin-top: 16rpx;
 }
 
-.GoDetail{
+.GoDetail[plain]{
   font-size:22rpx;
   float: left;
+  border:0;
+  padding:0;
+  width:32px;
+  height: 32px;
 }
-
-.Cancel{
+.GoDetailimg{
+  margin:0;
+  width:32px;
+  height: 32px;
+}
+.Cancel[plain]{
   font-size:22rpx;
   float: right;
+  border:0;
+  padding:0;
+  width:30px;
+  height: 30px;
+}
+.Cancelimg{
+  margin:0;
+  width:30px;
+  height: 30px;
 }

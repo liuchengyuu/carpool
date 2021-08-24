@@ -1,7 +1,7 @@
 /**index.wxss**/
 
 page {
-  background: #f6f6f6;
+  background: #89bfdf;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -83,7 +83,7 @@ page {
   width: 95%;
   height: 60rpx;
   padding: 10rpx 40rpx;
-  background-color: #fff;
+  background-color: rgb(143, 216, 206);
 }
 .menu-title{
   font-size: 32rpx; 
@@ -93,9 +93,10 @@ page {
 .switch-btn-wrapper {
   width: 240rpx;
   height: 60rpx;
-  background-color: grey;
+  background-color: rgb(121, 123, 124);
   color: white;
   text-align: center;
+  border-radius:8px;
 }
 .switch-btn-wrapper label {
   display: inline-flex;
@@ -105,10 +106,12 @@ page {
   font-size: 32rpx;
   vertical-align: middle;
   justify-content:center;
+  
 }
 .cur-menu{
   background-color: #00b26a;
   color: #fff;
+  border-radius:8px;
 }
 
 /* .userinfo, .uploader, .tunnel {
