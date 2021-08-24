@@ -20,7 +20,7 @@
       <i class="iconfont icon-fujin" style="fontsize:20rpx;color:#00b26a"></i>
       附近拼车情况
     </view>
-    <button style='font-size:22rpx;background: #a4e2be;' bindtap="startNewPinChe" wx:if = '{{ user_type == "passenger" }}'> 
+    <button style='font-size:22rpx;background: #a4e2be;border-radius: 8px;' bindtap="startNewPinChe" wx:if = '{{ user_type == "passenger" }}'> 
     发起新的拼车
     </button>
     <view class='switch-btn-wrapper'>

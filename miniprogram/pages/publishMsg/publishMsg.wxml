@@ -12,7 +12,7 @@
 
 
 
-<view id='msgWrapper'>
+<view style="background: #89bfdf;" id='msgWrapper'>
   <form bindsubmit="formSubmit">
     <!-- 起终点 -->
     <view class='input-area'>
@@ -80,7 +80,7 @@
   </view>
 
   <view class="textarea-wrp">
-    <textarea class='note' name="note" style='height: 3em;' placeholder='请输入备注信息' placeholder-style='font-size: 12px;'></textarea>
+    <textarea class='note' name="note" style='height: 3em;padding-left:25rpx;width:96.5%;' placeholder='请输入备注信息' placeholder-style='font-size: 12px;'></textarea>
   </view>
   <button form-type="submit" class='publish-btn' bindtap="passengerMsgAdd">发布</button>
   </form>
