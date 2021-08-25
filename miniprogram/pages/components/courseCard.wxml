@@ -15,7 +15,7 @@
      -->
 
     <view class='userinfo'>
-      <image class="userinfo-avatar" src='{{courseObj.avatarUrl}}'></image>
+      <image class="userinfo-avatar" src='../index/用户.png'></image>
       <label class='userinfo-nickname'>{{courseObj.nickName}}</label>
       <label class='my-order' wx:if="{{ showType == 0 && courseObj.nickName == user_id }}"> 我的订单 </label>
     </view>
@@ -33,12 +33,12 @@
             距您{{courseObj.distance}}km
           </label> -->
           
-          <button bindtap='bindGoDetail' class="GoDetail" data-courseObj='{{courseObj}}'>
-            查看订单
+          <button plain="true" bindtap='bindGoDetail' class="GoDetail" data-courseObj='{{courseObj}}'>
+            <image class='GoDetailimg' src='../../images/查看.png'></image>
           </button>
 
-          <button bindtap='bindCancelCourse' class="Cancel" data-courseObj='{{courseObj}}'>
-            取消订单
+          <button plain="true" bindtap='bindCancelCourse' class="Cancel" data-courseObj='{{courseObj}}'>
+            <image class='Cancelimg' src='../../images/取消.png'></image>
           </button>
 
           <!-- <button wx:if ='{{ courseObj.nickName == user_id }}' bindtap='bindCancel' style='font-size:22rpx;'>

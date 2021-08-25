@@ -19,7 +19,7 @@
 <view class='msg-wrapper'>
   <!-- 个人信息 -->
   <view class='userinfo'>
-    <image class="userinfo-avatar" src='{{courseInfo.avatarUrl}}'></image>
+    <image class="userinfo-avatar" src='../index/用户.png'></image>
     <label class='userinfo-nickname'></label>
     <label wx:if="{{showType == 1}}" style='margin-left:20rpx;font-size: 24rpx;color:#595959'>
       {{courseInfo.carNum}}  {{courseInfo.carInfo}}
@@ -34,11 +34,11 @@
     </view>
     <!-- 起终点 -->
     <view class='address-wrapper'>
-      <view class='start-address'>
+      <view style="border-bottom:1rpx solid #ececec;border-radius: 10px;" class='start-address'>
         <view class='address-title'>{{courseInfo.startAddressInfo.name}}</view>
         <view class='address-detail'>{{courseInfo.start}}</view>
       </view>
-      <view class='end-address'>
+      <view style="border-radius: 10px;" class='end-address'>
           <view class='address-title'>{{courseInfo.endAddressInfo.name}}</view>
           <view class='address-detail'>{{courseInfo.end}}</view>
       </view>    
@@ -66,8 +66,8 @@
     </view>
 
 <!-- 用户组列表 -->
-<view>
-  <text> 拼车用户组详情 </text> 
+<view style="background-color: rgba(176, 233, 243, 0.349);border-radius: 10px;">
+  <text > 拼车用户组详情 </text> 
   <view wx:for="{{courseInfo.personNum}}" wx:for-index="idx" wx:for-item="each_person">
     <text space="emsp">用户：{{courseInfo.nickName[idx]}}   该组人数：{{each_person}} </text>
    </view>
