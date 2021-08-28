@@ -33,11 +33,13 @@
             距您{{courseObj.distance}}km
           </label> -->
           
+          <!-- 查看订单 -->
           <button plain="true" bindtap='bindGoDetail' class="GoDetail" data-courseObj='{{courseObj}}'>
             <image class='GoDetailimg' src='../../images/查看.png'></image>
           </button>
 
-          <button plain="true" bindtap='bindCancelCourse' class="Cancel" data-courseObj='{{courseObj}}'>
+          <!-- 取消订单（限制本乘客） -->
+          <button wx:if ='{{ courseObj.nickName == user_id }}' plain="true" bindtap='bindCancelCourse' class="Cancel" data-courseObj='{{courseObj}}'>
             <image class='Cancelimg' src='../../images/取消.png'></image>
           </button>
 

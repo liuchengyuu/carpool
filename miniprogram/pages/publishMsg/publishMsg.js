@@ -180,6 +180,10 @@ Page({
 
       formData.price = CoursePrice;
 
+      //计算时间
+      let CostTime = _this.calTime(CourseDistance);
+      formData.CostTime = CostTime;
+      console.log("本次形成即将用时：",CostTime)
 
       formData.avatarUrl = this.data.avatarUrl;
       // 添加用户！
@@ -301,6 +305,7 @@ getDistance: function(lat1, lng1, lat2, lng2) {
   console.log('经纬度计算的距离:' + str)
   return s
 },
+
 calPrice:function(dis){//根据里程计算价格
   var res = 0;
   if(dis<=1)
@@ -310,6 +315,24 @@ calPrice:function(dis){//根据里程计算价格
   else
   {
     res = 9.6 + 3.2*(dis-1);
+  }
+  res = res.toFixed(2);
+  return res;
+},
+
+calTime:function(dis){
+  var res = 0;
+  if(dis<2)
+  {
+    res = 3.3*dis;
+  }
+  else if(dis>=2&&dis<10)
+  {
+    res = 6.6 + (dis-2)*2.43;
+  }
+  else
+  {
+    res = 6.6+2.43*8 + (dis-10)*1.86;
   }
   res = res.toFixed(2);
   return res;
