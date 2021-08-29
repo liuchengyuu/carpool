@@ -12,13 +12,14 @@ exports.main = async (event, context) => {
   var id = event.the_id;
   var personNum = event.personNum;
   var nickName = event.nickName;
-  publishMsgCollection.doc(id).set({
+  console.log('yun',id);
+  publishMsgCollection.doc(id).update({
     data: {
       personNum:personNum,
       nickName:nickName
     },
     success: function(res) {
-      console.log(res.data)
+      console.log('加入成功！',res.data)
     }
   })
 }
