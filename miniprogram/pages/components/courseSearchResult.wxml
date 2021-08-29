@@ -1,9 +1,7 @@
 <!-- 车主&乘客 -->
 <view class='course-type-btn'>
-  <view bindtap='_getDriverCourse' wx:if="{{showType == 0}}">车主行程</view>
-  <view bindtap='_getPassengerCourse' class='cur-selected' wx:else>车主行程</view>
-  <view bindtap='_getPassengerCourse' class='cur-selected' wx:if="{{showType == 0}}">乘客行程</view>
-  <view bindtap='_getPassengerCourse' wx:else>乘客行程</view>
+  <view bindtap='_getPassengerCourse' class='cur-selected' wx:if="{{showType == 0}}">行程</view>
+  <view bindtap='_getPassengerCourse' wx:else>行程</view>
 </view>
 <!-- 搜索结果 -->
 <view wx:if="{{courseSearchList.length > 0}}">
