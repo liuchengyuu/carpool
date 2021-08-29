@@ -40,11 +40,13 @@
 
 <view class="input-wrapper" >
             <label class= 'prompt'>账号</label>
-            <input class = 'my-input' bindinput='inputUserId' type='text' name="my_userid" placeholder='user_id'/>
+            <input class = 'my-input' bindinput='inputUserId' type='text' name="my_userid" placeholder='请输入账号'/>
 </view>
 <view class="input-wrapper" style="margin-top: 10px;" >
             <label class= 'prompt'>密码</label>
-            <input class = 'my-input' bindinput='inputPassword' type='text' name="my_password" placeholder='password'/>
+            <image class='showImg' style="width: 30px; height: 30px; background-color: #8DD8FF;" bindtap='showPassword' src="{{isPassword ? '/images/close.png' : '/images/open.png' }}"></image>
+
+            <input class = 'my-input' bindinput='inputPassword'  password='{{isPassword}}' type='text' name="my_password" placeholder='请输入密码'/>
 </view>
 
 
