@@ -2,7 +2,7 @@
 
 // 获取数据库的引用
 const db = wx.cloud.database()
-
+const _ = db.command //代码开头加上
 Page({
 
   /**
@@ -62,31 +62,96 @@ Page({
     })
   },
 
-  /* 点击注册按钮，修改数据库内容 */
+ /* 点击注册按钮，修改数据库内容 */
   loginEvent: function(options){
-    console.log(this.data)
-    //! TODO: 添加用户名的重复检查？ 表单项目不为空的检查...
-    db.collection('dirverInfo')
-    .add({
-      data:{
-        user_id: this.data.user_id,
-        password: this.data.password,
-        phone: this.data.phone_number,
-        car_number: this.data.car_number,
-        user_name: this.data.user_name,
-        car_number: "5"
-      }
-    })
-    .then(res => {
-      console.log("插入新driver: ", res);
-      // 成功后重新调回登录页面
-      wx.navigateBack({
-        delta: 0,
+    // 检查注册信息是否为空
+    if (this.data.user_id == '') {
+      wx.showToast({
+        title: '昵称不能为空',
+        icon: "none"
       })
+      return;
+    } else if (this.data.password == ''|| this.data.password<6) {
+      wx.showToast({
+        title: '密码不能为空而且需要大于等于6位',
+        icon: "none"
+      })
+      return;
+    } else if (this.data.phone_number == '') {
+      wx.showToast({
+        title: '电话不能为空',
+        icon: "none"
+      })
+      return;
+    }else if (this.data.car_number == '') {
+      wx.showToast({
+        title: '车牌号码不能为空',
+        icon: "none"
+      })
+      return;
+    }
+    else if (this.data.user_name == '') {
+      wx.showToast({
+        title: '车主姓名不能为空',
+        icon: "none"
+      })
+      return;
+    }
+
+    db.collection("passengerInfo")
+    .where(
+        _.or([
+        {
+          user_id: this.data.user_id
+        },
+        {
+          phone: this.data.phone_number
+        }
+      ])
+    )
+    .get()
+    .then(res => {
+      console.log("查找表成功：", res);
+      if(res.data.length > 0){
+        wx.showToast({
+          title: "用户名或电话已被注册",
+          icon: 'none',
+          duration: 2000
+        })
+      }
+      else{
+        console.log(this.data)
+        db.collection('dirverInfo')
+        .add({
+          data:{
+            user_id: this.data.user_id,
+            password: this.data.password,
+            phone: this.data.phone_number,
+            car_number: this.data.car_number,
+            user_name: this.data.user_name
+          }
+        })
+        .then(res => {
+          console.log("插入新driver: ", res);
+          // 成功后重新调回登录页面
+          wx.navigateBack({
+            delta: 0,
+          })
+          wx.showToast({
+            title: "注册成功",
+            icon: 'none',
+            duration: 2000
+          })
+        })
+        .catch(err => {
+          console.log("失败：", err);
+        })
+       }
     })
     .catch(err => {
-      console.log("失败：", err);
-    })
+      console.log("查找表失败...", err)
+    }
+    )
   },
 
   /**
