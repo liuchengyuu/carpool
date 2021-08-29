@@ -81,10 +81,6 @@
 </view>
 </view>
 <view class='btn-group'>
-  <label wx:if="{{isCollected}}">
-    已收藏
-  </label>
-  <label wx:else bindtap='bindCollectCourse' id='starBtn'>收藏</label>
 
   <label wx:if='{{ courseInfo.startedBy && user_type == "passenger" }}' id='shareBtn' bindtap='bindCancelCourse' >取消订单</label>
   <label wx:elif = '{{ courseInfo.isFull && user_type == "passenger" }}' id='shareBtn' > 该订单已满 </label>
