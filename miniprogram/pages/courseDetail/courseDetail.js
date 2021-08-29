@@ -186,7 +186,7 @@ Page({
     }
     course.personNum.splice(i, 1);
     course.nickName.splice(i, 1);
-
+   
     if(course.personNum.length == 0){
       // TODO 删除这条订单记录，少一个云函数
       wx.cloud.callFunction({
@@ -210,6 +210,43 @@ Page({
    */
   bindCancelCourse: function(options){
     // TODO 司机取消订单
+    console.log("司机取消订单");
+    let i = 0;
+    let course = this.data.courseInfo;
+    console.log(course);
+    course.acceptBy =" ";
+    // 删除订单记录
+    console.log("test begin");
+    db.collection('driverMsg')
+    .where({
+      data:{
+        user_id: app.globalData.user_id,
+        course_id: course._id
+      }
+    })
+    .remove()
+    .then(res => {
+      console.log("删除driverMsg: ", res);
+    })
+    .catch(err => {
+      console.log("删除driverMsg失败: ", err);
+    });
+    // 添加一个云函数，修改表
+    wx.cloud.callFunction({
+      name: 'bindAcceptOrdering',
+      data: {
+        course_id:course._id,
+        acceptBy:course.acceptBy
+      },
+    })
+    .then(res => {
+      console.log("成功修改acceptBy", res);
+    })
+    .catch(err => {
+      console.log("修改acceptBy出错", err);
+    });
+
+
   },
 
   bindAcceptOrdering: function(options){
