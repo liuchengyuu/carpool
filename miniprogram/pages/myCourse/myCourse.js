@@ -1,4 +1,5 @@
 // miniprogram/pages/myCourse/myCourse.js
+const db = wx.cloud.database();//代码开头加上
 Page({
 
   /**
@@ -83,19 +84,37 @@ Page({
       title: '加载中...',
     })
     // 获取收藏数据，默认为乘客行程 type = 0
-    wx.cloud.callFunction({
-      name: 'getUserCourse',
-      data: {
-        type: this.data.showType,
-      },
-    }).then((res) => {
-      console.log(res)
+    if(app.globalData.user_type=='passenger'){
+    db.collection("passengerMsg")
+    .where({
+        phone:app.globalData.user_phone
+    })
+    .get()
+    .then((res) => {
+      console.log("查找表0成功：", res);
       this.setData({
-        courseList: typeof (res.result.data) != 'undefined' && res.result.data.length > 0 ? res.result.data : []
+        courseList: res.data.length > 0 ? res.data : []
       });
       setTimeout(function () {
         wx.hideLoading()
       }, 500);
     })
   }
+  else{
+    db.collection("passengerMsg")
+    .where({
+        acceptBy:app.globalData.user_id
+    })
+    .get()
+    .then((res) => {
+      console.log("查找表1成功：", res);
+      this.setData({
+        courseList: res.data.length > 0 ? res.data : []
+      });
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 500);
+    })
+  }
+}
 })
