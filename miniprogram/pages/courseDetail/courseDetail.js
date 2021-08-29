@@ -72,6 +72,7 @@ Page({
       }]
     })
 
+    console.log("course:",courseInfo);
     // 其中 courseInfo 记录了行程的绝大部分信息
     console.log(this.data);
     // 人数求和
@@ -155,7 +156,12 @@ Page({
    * @brief 添加
    */
   bindJoinCourse: function(options){
+
+    let courseObj = options
+    console.log('hh~',options)
+
     let course =  this.data.courseInfo;
+    console.log('123',options.currentTarget.dataset.courseobj._id)
     course.personNum.push(1);
     course.nickName.push(app.globalData.user_id);
 
@@ -163,7 +169,7 @@ Page({
     wx.cloud.callFunction({
       name:'bindJoin', 
       data:{
-        the_id:options.currentTarget.dataset.courseobj._id,
+        the_id:course._id,
         personNum:course.personNum,
         nickName:course.nickName
       }

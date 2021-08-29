@@ -47,6 +47,7 @@ Component({
   methods: {
     bindGoDetail: function(e) {
       let courseObj = e.currentTarget.dataset.courseobj
+      console.log("hh~",e);
       console.log(e.currentTarget.dataset.courseobj)
       wx.navigateTo({
         url: '../courseDetail/courseDetail?course=' + JSON.stringify(courseObj) + '&showType=' + this.data.showType
