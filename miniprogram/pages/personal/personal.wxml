@@ -9,13 +9,7 @@
   
   <!-- 功能列表 -->
   <view class='my-items'>
-    <view bindtap='bindGetMyCollection' class='item-wrapper'>
-      <view>
-        <i class="iconfont icon-xingzhuanggongnengtubiao-" style="fontsize:20rpx; color:rgb(141,216,255);"></i>我的收藏
-      </view>
-      
-      <label>></label>
-    </view>
+    
     <view bindtap='bindGetMyCoursePage' class='item-wrapper'>
       <view>
         <i class="iconfont icon-flagfold" style="fontsize:20rpx; color:rgb(141,216,255);"></i>历史行程
