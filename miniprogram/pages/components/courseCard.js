@@ -32,7 +32,7 @@ Component({
     attached: function(options) {
       // 在组件实例进入页面节点树时执行
       this.setData({
-        user_type: app.globalData.user_type
+        user_type: 'passenger'
       })
       console.log("我爱你中国", this.data);
       
