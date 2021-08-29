@@ -29,6 +29,7 @@
   background-color: rgba(176, 233, 243, 0.349);
   border-radius:10px;
 }
+
 .userinfo-avatar {
   position: relative;
   left: 2rpx;

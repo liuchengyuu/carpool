@@ -11,10 +11,10 @@
 
 <!--index.wxml-->
 <view class="container">
-
-<text wx:if="{{ user_type == 'passenger' }}"> 亲爱的乘客，您好</text>
-<text wx:else> 亲爱的司机，您好</text>
-
+<view style="font-weight: bold; background-color: rgb(160, 228, 245);border-radius: 6px;width:100%">
+<text style="display: flex;justify-content: center;align-items: center;" wx:if="{{ user_type == 'passenger' }}"> 乘客，您好</text>
+<text style="font-weight: bold; display: flex;justify-content: center;align-items: center;" wx:else> 司机，您好</text>
+</view>
   <view class='menu-bar'>
     <view class='menu-title'>
       <i class="iconfont icon-fujin" style="fontsize:20rpx;color:#00b26a"></i>
