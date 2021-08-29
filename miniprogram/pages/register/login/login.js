@@ -10,9 +10,18 @@ Page({
   data: {
     user_type: "", // 用户类型
     user_id:"",
-    password: ""
+    password: "",
+    isPassword: true
   },
-
+  
+  //是否可视的图标
+showPassword: function(e) {
+  var isPassword = !this.data.isPassword;
+  this.setData({
+    isPassword: isPassword
+  })
+},
+  
   /**
    * 生命周期函数--监听页面加载
    */
