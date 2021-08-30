@@ -1,0 +1,78 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "db guide",
+          "pathName": "pages/databaseGuide/databaseGuide",
+          "query": ""
+        },
+        {
+          "name": "乘客-发起新的拼车界面",
+          "pathName": "pages/publishMsg/publishMsg",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "登录",
+          "pathName": "pages/register/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "发布",
+          "pathName": "pages/publish/publish",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "乘客-信息界面",
+          "pathName": "pages/index/index",
+          "query": "user_id=51666&user_phone=18717703963&user_type=passenger",
+          "scene": null
+        },
+        {
+          "name": "司机注册",
+          "pathName": "pages/register/register_driver/register_driver",
+          "query": "id=driver",
+          "scene": null
+        },
+        {
+          "name": "司机界面",
+          "pathName": "pages/index/index",
+          "query": "user_id=555&user_phone=555&user_type=driver",
+          "scene": null
+        },
+        {
+          "name": "乘客-订单详情",
+          "pathName": "pages/courseDetail/courseDetail",
+          "query": "course=%7B%22_id%22%3A%228937eaa96111462703b6d8a60c6b98a1%22%2C%22startAddressInfo%22%3A%7B%22address%22%3A%22%E4%B8%8A%E6%B5%B7%E5%B8%82%E4%B8%8A%E6%B5%B7%E5%B8%82%22%2C%22addressComponent%22%3A%7B%22city%22%3A%22%E4%B8%8A%E6%B5%B7%E5%B8%82%22%2C%22district%22%3A%22%E5%98%89%E5%AE%9A%E5%8C%BA%22%2C%22nation%22%3A%22%E4%B8%AD%E5%9B%BD%22%2C%22province%22%3A%22%E4%B8%8A%E6%B5%B7%E5%B8%82%22%2C%22street%22%3A%22%E5%98%89%E6%88%AC%E5%85%AC%E8%B7%AF%22%2C%22street_number%22%3A%22%E5%98%89%E6%88%AC%E5%85%AC%E8%B7%AF%22%7D%2C%22latitude%22%3A31.37482%2C%22longitude%22%3A121.26621%2C%22name%22%3A%22%22%7D%2C%22avatarUrl%22%3A%22https%3A%2F%2Fthirdwx.qlogo.cn%2Fmmopen%2Fvi_32%2FPOgEwh4mIHO4nibH0KlMECNjjGxQUq24ZEaGT4poC6icRiccVGKSyXwibcPq4BWmiaIGuG1icwxaQX6grC9VemZoJ8rg%2F132%22%2C%22date%22%3A%222021-08-11%22%2C%22end%22%3A%22%E4%B8%8A%E6%B5%B7%E5%B8%82%E5%98%89%E5%AE%9A%E5%8C%BA%E5%8F%B6%E5%9F%8E%E8%B7%AF209%E5%8F%B7%22%2C%22nickName%22%3A%5B%2251666%22%5D%2C%22note%22%3A%22%E9%A3%9E%E9%A3%9E%E9%A3%9E%22%2C%22phone%22%3A%2218717703963%22%2C%22start%22%3A%22%E4%B8%8A%E6%B5%B7%E5%B8%82%E4%B8%8A%E6%B5%B7%E5%B8%82%22%2C%22time%22%3A%2209%3A00%22%2C%22_openid%22%3A%22ouqTk5AQB6Q5HUtzDM9EVWW8D7N8%22%2C%22acceptBy%22%3A%22%22%2C%22endAddressInfo%22%3A%7B%22addressComponent%22%3A%7B%22city%22%3A%22%E4%B8%8A%E6%B5%B7%E5%B8%82%22%2C%22district%22%3A%22%E5%98%89%E5%AE%9A%E5%8C%BA%22%2C%22nation%22%3A%22%E4%B8%AD%E5%9B%BD%22%2C%22province%22%3A%22%E4%B8%8A%E6%B5%B7%E5%B8%82%22%2C%22street%22%3A%22%E5%8F%B6%E5%9F%8E%E8%B7%AF%22%2C%22street_number%22%3A%22%E5%8F%B6%E5%9F%8E%E8%B7%AF209%E5%8F%B7%22%7D%2C%22latitude%22%3A31.373175%2C%22longitude%22%3A121.277538%2C%22name%22%3A%22%E6%96%B0%E5%9F%8E%C2%B7%E9%A6%A5%E5%8D%8E%E9%87%8C%22%2C%22address%22%3A%22%E4%B8%8A%E6%B5%B7%E5%B8%82%E5%98%89%E5%AE%9A%E5%8C%BA%E5%8F%B6%E5%9F%8E%E8%B7%AF209%E5%8F%B7%22%7D%2C%22personNum%22%3A%5B3%5D%2C%22distance%22%3A%220.00%22%7D&showType=0",
+          "scene": null
+        },
+        {
+          "name": "publishMsg",
+          "pathName": "pages/publishMsg/publishMsg",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "courseCard",
+          "pathName": "pages/index/index",
+          "query": "user_id=51666&user_phone=18717703963&user_type=passenger",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

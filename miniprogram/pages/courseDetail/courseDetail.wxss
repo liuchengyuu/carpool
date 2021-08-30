@@ -12,9 +12,9 @@ page {
   display: flex;
   flex-direction: column;
 }
-#myMap {
+map {
   width: 100%;
-  max-height: 400rpx;
+  height: 45%;
 }
 
 .msg-wrapper {
@@ -22,14 +22,16 @@ page {
   width: 95%;
   font-size: 32rpx;
   padding: 16rpx;
-  padding-top: 8rpx;
-  background-color: #fff;
+  padding-top: 16rpx;
+  background-color: rgb(153, 208, 218);
 }
 .userinfo {
   width: 100%;
   height: 70rpx;
   line-height: 70rpx;
   border-bottom: 1rpx solid #ececec;
+  background-color: rgba(176, 233, 243, 0.349);
+  border-radius: 10px;
 }
 .userinfo-avatar {
   position: relative;
@@ -47,7 +49,9 @@ page {
   display: flex;
   flex-direction: row;
   height: 90rpx;
-  line-height: 90rpx
+  line-height: 90rpx;
+  background-color: rgba(176, 233, 243, 0.349);
+  border-radius: 10px;
 }
 .num-wrapper, .price-wrapper {
   display: flex;
@@ -55,6 +59,8 @@ page {
   height: 60rpx;
   line-height: 60rpx;
   justify-content: space-between;
+  background-color: rgba(176, 233, 243, 0.349);
+  border-radius: 10px;
 }
 .address-detail {
   padding: 10rpx 0;
@@ -62,7 +68,9 @@ page {
   color: #595959;
 }
 .address-wrapper {
-  width: 80%;
+  width: 100%;
+  background-color: rgba(176, 233, 243, 0.349);
+  border-radius: 10px;
 }
 
 .price-num {
@@ -101,13 +109,14 @@ page {
 }
 .btn-group label{
   flex: 1;
-  background-color: #fff;
+  background-color: rgb(218, 247, 245);
+  border-radius: 5px;
 }
 #starBtn {
   border-right: 1rpx solid #ececec;
 }
 #callBtn {
-  background-color: #00b26a !important;
+  background-color: #00b26bd0 !important;
   color: #fff;
 }
 i {

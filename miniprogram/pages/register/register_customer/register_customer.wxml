@@ -1,0 +1,50 @@
+<image class="bg" src="../../../images/home-bg.jpg" />
+
+<view class="table" style="padding-top: 50px">
+  <view class="tr bg-w" style="padding-bottom: 30px">
+    <view class="th" wx:if="{{user_type == 'passenger'}}">
+          <view id='passenger' bindtap='passengerPublish'>
+            <!-- <i class="iconfont icon-chengke" style="font-size:88rpx;color:#fff"></i> -->
+            <image class = 'credit_icon' src="../../../images/customer_png.png"></image>
+          </view>
+    </view>
+
+    <view class="th" wx:if="{{user_type == 'driver'}}">
+        <view id='driver' bindtap='driverPublish' >
+          <!-- <i class="iconfont icon-qiche-copy" style="font-size:96rpx;color:#fff"></i> -->
+          <image class = 'credit_icon' src="../../../images/driver_png.png"></image>
+        </view>
+    </view>
+  </view>
+  <view class="tr bg-w">
+
+    <view class="td" wx:if="{{user_type == 'passenger'}}">
+      <view>
+        <label class="credit_lable">你好，乘客</label>
+      </view>
+    </view>
+
+    <view class="td" wx:if="{{user_type == 'driver'}}">
+      <view>
+        <label class="credit_lable">你好，车主</label>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="input-wrapper">
+            <label class="prompt">账号</label>
+            <input class="my-input" bindinput="inputUserId" type='text' name="my_userid" placeholder='user_id'/>
+</view>
+<view class="input-wrapper">
+            <label class="prompt">密码</label>
+            <input class="my-input" bindinput="inputPassword" type='text' name="my_password" placeholder='password'/>
+</view>
+<view class="input-wrapper">
+            <label class="prompt">电话</label>
+            <input class="my-input" bindinput="inputPhone" type='text' name="my_phone" placeholder='phone_number'/>
+</view>
+
+<button bindtap="loginEvent" style="margin-left: 40px; margin-right: 40px; color: #fff; background: rgba(87,136,255); margin-bottom: 20px">
+注册
+</button>    

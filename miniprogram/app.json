@@ -1,24 +1,34 @@
 {
   "pages": [
+    "pages/publish/publish",
     "pages/index/index",
     "pages/personal/personal",
     "pages/publishMsg/publishMsg",
-    "pages/publish/publish",
+    
     "pages/courseDetail/courseDetail",
     "pages/courseSearch/courseSearch",
     "pages/courseSearch/courseSearchByLoc",
     "pages/personalCollection/personalCollection",
-    "pages/pubMsgOfDriver/pubMsgOfDriver",
     "pages/myCourse/myCourse",
     "pages/aboutUs/aboutUs",
-    "pages/nav/nav"
+    "pages/nav/nav",
+
+    "pages/register/login/login",
+    "pages/register/register_customer/register_customer",
+    "pages/register/register_driver/register_driver"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "授权当前位置" 
+    }
+  },
   "window": {
     "backgroundColor": "#7A7A7A",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "同城老乡拼车",
-    "navigationBarTextStyle": "black"
+    "navigationBarTitleText": "同城拼车 (BY GROUP 2)",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "selectedColor": "#32c9b5",
@@ -30,17 +40,13 @@
         "selectedIconPath": "images/index-selected.png"
       },
       {
-        "pagePath": "pages/publish/publish",
-        "text": "发布",
-        "iconPath": "images/edit.png",
-        "selectedIconPath": "images/edit-selected.png"
-      },
-      {
         "pagePath": "pages/personal/personal",
         "text": "我的",
         "iconPath": "images/my.png",
         "selectedIconPath": "images/my-selected.png"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
+

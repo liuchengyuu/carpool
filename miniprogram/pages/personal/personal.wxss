@@ -16,7 +16,7 @@ page {
   width: 100%;
   text-align: center;
   justify-content: center;
-  background-color: #00b26a;
+  background-color: rgb(16,174,255);
 }
 
 /* ================= */

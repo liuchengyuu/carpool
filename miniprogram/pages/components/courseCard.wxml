@@ -1,21 +1,51 @@
 <!--pages/components/courseCard.wxml-->
-<view bindtap='bindGoDetail' class='msg-card' data-courseObj='{{courseObj}}'>
+
+<!-- showType == 1 表示我的 -->
+
+<view  class='msg-card' wx:if="{{ (user_type == 'passenger' && (showType == 0 || ( showType == 1  &&  courseObj.nickName == user_id)) ) || (user_type == 'driver' && ((showType == 0 && courseObj.acceptBy == '') || ( showType == 1  &&  courseObj.acceptBy == user_id)) )}}">
+
+
+<!-- 当是乘客时，有以下两种情况：
+     showType == 0 代表所有
+     showType == 1  &&  courseObj.nickName == user_id 当前用户的拼车情况 
+     
+     当是车主时，有以下两种情况：
+     showType == 0 && courseObj.acceptBy == '' ： 代表所有未被接收的订单
+     showType == 1  &&  courseObj.acceptBy == user_id： 代表当前用户的接单情况
+     -->
+
     <view class='userinfo'>
-      <image class="userinfo-avatar" src='{{courseObj.avatarUrl}}'></image>
+      <image class="userinfo-avatar" src='../index/用户.png'></image>
       <label class='userinfo-nickname'>{{courseObj.nickName}}</label>
+      <label class='my-order' wx:if="{{ showType == 0 && courseObj.nickName == user_id }}"> 我的订单 </label>
     </view>
+
     <view class='pinche-info'>
       <view class='item-wrapper'>
         <i class="iconfont icon-shijian" style="font-size:24rpx;"></i>
         <view class='datetime'>{{courseObj.date}} {{courseObj.time}}</view>
         <view style='position:absolute;right:50rpx;font-size:24rpx;'>
-          <i class="iconfont icon-juli" style="font-size:24rpx;"></i>
+          <!-- <i class="iconfont icon-juli" style="font-size:24rpx;"></i>
           <label wx:if="{{courseObj.distanceStart}}" style='font-size:22rpx;'>
             距您 起:{{courseObj.distanceStart}}/终:{{courseObj.distanceEnd}}km
           </label>
           <label wx:else>
             距您{{courseObj.distance}}km
-          </label>
+          </label> -->
+          
+          <!-- 查看订单 -->
+          <button plain="true" bindtap='bindGoDetail' class="GoDetail" data-courseObj='{{courseObj}}'>
+            <image class='GoDetailimg' src='../../images/查看.png'></image>
+          </button>
+
+          <!-- 取消订单（限制本乘客） -->
+          <button wx:if ='{{ courseObj.nickName == user_id }}' plain="true" bindtap='bindCancelCourse' class="Cancel" data-courseObj='{{courseObj}}'>
+            <image class='Cancelimg' src='../../images/取消.png'></image>
+          </button>
+
+          <!-- <button wx:if ='{{ courseObj.nickName == user_id }}' bindtap='bindCancel' style='font-size:22rpx;'>
+            取消订单
+          </button> -->
         </view>
       </view>
       <view class='main-info'>
@@ -40,19 +70,17 @@
         <view class='price-num'>
           <view>
             <label class='price-info'>{{courseObj.price}}</label>
-            <label wx:if="{{showType == 0}}" style='font-size: 24rpx; color:#595959;padding-left:10rpx;'>元</label>
-            <label style='font-size: 24rpx; color:#595959;padding-left:10rpx;' wx:else>元/人</label>  
+            <label  style='font-size: 24rpx; color:#595959;padding-left:10rpx;'>元</label> 
+            <!-- wx:if="{{showType == 0}}" -->
+            <!-- <label style='font-size: 24rpx; color:#595959;padding-left:10rpx;' wx:else>元/人</label>   -->
           </view>
-          <view wx:if="{{showType == 0}}" >
+          <view>
             <label class='num-info'>{{courseObj.personNum}}</label>
             <label style='font-size: 24rpx; color:#595959;padding-left:10rpx;'>位乘客</label>
           </view>
-          <view wx:else>
-            <label style='font-size: 24rpx; color:#595959;padding-left:10rpx;'>余座</label>
-            <label class='num-info'>{{courseObj.surplusSeat}}</label>
-          </view>
+
         </view>
       </view>
     </view>
-  </view>
+</view>
 

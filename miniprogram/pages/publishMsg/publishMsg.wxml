@@ -1,26 +1,28 @@
-<!-- <map id="myMap" 
+<!-- 发布拼车页 -->
+
+<map id="myMap" 
   latitude="{{latitude}}" 
   longitude="{{longitude}}" 
   markers="{{markers}}"
-  subkey="H6HBZ-T5LCV-CXFPA-UAJJR-UDJTE-5EB3X"
+  subkey="IRMBZ-WSV63-4RH35-3RAE2-Y3YB5-OKBEI"
   show-location
   >
 
-</map> -->
+</map>
 
 
 
-<view id='msgWrapper'>
+<view style="background: #89bfdf;" id='msgWrapper'>
   <form bindsubmit="formSubmit">
     <!-- 起终点 -->
     <view class='input-area'>
       <view class="input-wrapper">
           <label class='start-icon'>起</label>
-          <input bindfocus='bindSelectStart' class='point-input' id='start' name="start" value='{{startAddressInfo.address}}' placeholder='点击选择起点'/>
+          <input bindtap='bindSelectStart' class='point-input' id='start' name="start" value='{{startAddressInfo.address}}' placeholder='点击选择起点'/>
       </view>
       <view class="input-wrapper">
           <label class='end-icon'>终</label>
-          <input bindfocus='bindSelectEnd' class='point-input' id='end' name="end" value='{{endAddressInfo.address}}' placeholder='点击选择终点'/>
+          <input bindtap='bindSelectEnd' class='point-input' id='end' name="end" value='{{endAddressInfo.address}}' placeholder='点击选择终点'/>
       </view>
     </view>
 
@@ -29,18 +31,18 @@
       <view class="input-wrapper">
         <label>人数：</label>
         <picker name="personNum" bindchange="bindNumChange" value='{{index}}' mode="selector" range="{{personRange}}" style='height:35px;flex: 1; text-align: right;padding-right: 20rpx;'>
-          <view class="picker" wx:if="{{index == -1}}">
+          <view class="picker" wx:if="{{index == 1}}">
             请选择 >
           </view>
           <view class="picker" wx:else> 
-            {{personRange[index]}}
+            {{personRange[index - 1]}}
           </view>
         </picker>
       </view>
-      <view class="input-wrapper">
+      <!-- <view class="input-wrapper">
             <label>可接受价</label>
             <input style='height:35px;flex: 1; text-align: right;padding-right: 20rpx;' type='number' name="price" placeholder='点击输入'/>
-      </view>  
+      </view>   -->
     </view>
   
 
@@ -73,12 +75,12 @@
       </view>
     </view>
     <view class="input-wrapper">
-      <input style='height:35px;' type='number' name="phone" placeholder='请输入联系方式'/>
+      <label> 联系电话：</label> <input style='height:35px;' type='number' name="phone" placeholder='请输入联系方式' value='{{ phone }}'/>
     </view>  
   </view>
 
   <view class="textarea-wrp">
-    <textarea class='note' name="note" style='height: 3em;' placeholder='请输入备注信息' placeholder-style='font-size: 12px;'></textarea>
+    <textarea class='note' name="note" style='height: 3em;padding-left:25rpx;width:96.5%;' placeholder='请输入备注信息' placeholder-style='font-size: 12px;'></textarea>
   </view>
   <button form-type="submit" class='publish-btn' bindtap="passengerMsgAdd">发布</button>
   </form>

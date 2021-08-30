@@ -1,0 +1,74 @@
+/* miniprogram/pages/register/login/login.wxss */
+
+.bg {
+  position: absolute;
+  width: 750rpx;
+  height: 1600rpx;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.my-input{
+  height:35px;flex: 1; text-align: right;padding-right: 20rpx; background: rgba(255,255,255,0.4); border-radius: 10px;
+}
+
+.input-wrapper{
+  margin-left: 40px;
+  margin-right: 40px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  padding: 5px;
+  background: rgb(141,216,255);
+}
+
+.prompt{
+  color: #fff;
+}
+
+.credit_icon{
+  height: 80px;
+  width: 80px;
+  border-radius: 80px;
+}
+
+.my-font{
+  color: rgb(133,181,201);
+}
+.bg {
+  position: absolute;
+  width: 750rpx;
+  height: 1100rpx;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.tr {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 3rem;
+  align-items: center;
+}
+.td {
+    width:40%;
+    justify-content: center;
+    text-align: center;
+}
+
+.th {
+  
+  width: 40%;
+  justify-content: center;
+  display: flex;
+  height: 200px;
+  align-items: center;
+}
+
+.credit_lable {
+  background-color: rgb(141,216,255);
+  color: #fff;
+  padding: 5px;
+  border-radius: 10px;
+}

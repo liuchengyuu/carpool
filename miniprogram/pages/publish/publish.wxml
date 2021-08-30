@@ -1,13 +1,47 @@
-<view id='mainWrapper'>
-  <label id='pageTitle'>一键发布行程</label>
-  <label id='chooseTitle'>选择身份</label>
-  <view id='passenger' bindtap='passengerPublish'>
-    <i class="iconfont icon-chengke" style="font-size:88rpx;color:#fff"></i>
-  </view>
-  <label>乘客</label>
 
-  <view id='driver' bindtap='driverPublish'>
-    <i class="iconfont icon-qiche-copy" style="font-size:96rpx;color:#fff"></i>
+<!-- 首页 -->
+
+<image class="bg" src="../../images/home-bg.jpg" />
+
+
+
+<view id='mainWrapper'>
+
+  <label id='pageTitle' class = 'my-font' style="padding-left: 30px">欢迎使用 <image style="height: 30px; width: 30px; " src="../../images/home-sun.png" /> </label> 
+
+  <label id='chooseTitle'  class = 'my-font'>点击图标选择您的身份</label>
+
+
+<view class="table" style="padding-top: 50px">
+  <view class="tr bg-w" style="padding-bottom: 30px">
+    <view class="th">
+          <view id='passenger' bindtap='passengerPublish'>
+            <!-- <i class="iconfont icon-chengke" style="font-size:88rpx;color:#fff"></i> -->
+            <image class = 'credit_icon' src="../../images/customer_png.png"></image>
+          </view>
+    </view>
+
+    <view class="th">
+        <view id='driver' bindtap='driverPublish'>
+          <!-- <i class="iconfont icon-qiche-copy" style="font-size:96rpx;color:#fff"></i> -->
+          <image class = 'credit_icon' src="../../images/driver_png.png"></image>
+        </view>
+    </view>
   </view>
-  <label>车主</label>
+  <view class="tr bg-w">
+
+    <view class="td">
+      <view>
+        <label class="credit_lable" bindtap='passengerPublish'>我是乘客</label>
+      </view>
+    </view>
+
+    <view class="td">
+      <view>
+        <label class="credit_lable" bindtap='driverPublish'>我是车主</label>
+      </view>
+    </view>
+  </view>
+</view>
+
 </view>

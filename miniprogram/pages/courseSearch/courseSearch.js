@@ -70,33 +70,38 @@ Page({
   getCourseByDistrict: function () {
     let _this = this;
 
-    // 加载动画
-    wx.showLoading({
-      title: '加载中...',
-    })
-    // 调用云函数，更新统计数据
-    wx.cloud.callFunction({
-      name: 'getCourseByDistrict',
-      data: {
-        start: {
-          city: _this.data.startRegion[1],
-          district: _this.data.startRegion[2],
-        },
-        end: {
-          city: _this.data.endRegion[1],
-          district: _this.data.endRegion[2],
-        },
-        showType: _this.data.showType
-      },
-    }).then(res => {
-      _this.setData({
-        courseList: res.result.data
+    console.log( _this.data)
+    if( _this.data.startRegion.length == 0)
+      return;
+    else{
+      // 加载动画
+      wx.showLoading({
+        title: '加载中...',
       })
-      setTimeout(function () {
-        wx.hideLoading()
-      }, 500);
-      console.log(res)
-    }).catch(console.error)
+      // 调用云函数，更新统计数据
+      wx.cloud.callFunction({
+        name: 'getCourseByDistrict',
+        data: {
+          start: {
+            city: _this.data.startRegion[1],
+            district: _this.data.startRegion[2],
+          },
+          end: {
+            city: _this.data.endRegion[1],
+            district: _this.data.endRegion[2],
+          },
+          showType: _this.data.showType
+        },
+      }).then(res => {
+        _this.setData({
+          courseList: res.result.data
+        })
+        setTimeout(function () {
+          wx.hideLoading()
+        }, 500);
+        console.log(res)
+      }).catch(console.error)
+    }
   },
 
   bindEndRegionChange: function (e) {
